@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Record New Trip</h1>
+    <form>
+        <div class="form-group">
+            <label for="vehicle">vehicle</label>
+            <select class="form-control" id="vehicle" required>
+                <option *ngFor="let veh of vehicles" [value]="veh">{{veh}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="previousMileage">previousMileage</label>
+            <input type="text" class="form-control" id="previousMileage" required>
+        </div>
+        <div class="form-group">
+            <label for="currentMileage">currentMileage</label>
+            <input type="text" class="form-control" id="currentMileage" required>
+        </div>
+        <div class="form-group">
+            <label for="gallons">gallons</label>
+            <input type="text" class="form-control" id="gallons" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+</div>

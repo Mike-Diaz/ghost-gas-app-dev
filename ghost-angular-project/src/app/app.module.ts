@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 
 import { FormsModule } from '@angular/forms';
 import { GascalcComponent } from './gascalc/gascalc.component';
+import { AddTripFormComponent } from './add-trip-form/add-trip-form.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { GascalcComponent } from './gascalc/gascalc.component';
     CalculateComponent,
     GascalcComponent,
     HeaderComponent
+    HeaderComponent,
+    AddTripFormComponent
   ],
   imports: [
     BrowserModule,
