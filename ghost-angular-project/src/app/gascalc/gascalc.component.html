@@ -1,0 +1,24 @@
+<div class="boxed">
+    <b>Gas and Money Spent:</b>
+    <div>
+        <label class="labels">MPG:
+            <input [(ngModel)]="mpg">
+            <!-- ngModel is making the link back to our ts class -->
+        </label>
+    </div>
+    <div>
+        <label class="labels">Cost Per Gal:
+            <input [(ngModel)]="cost">
+        </label>
+    </div>
+
+    <div>
+        <label class="labels">Distance Traveled:
+            <input [(ngModel)]="dist">
+        </label>
+    </div>
+    <div>
+        Gas spent = {{dist}} / {{mpg}} = {{dist / mpg}} gallons spent <br />
+        Total trip cost = ({{dist}} / {{mpg}}) x {{cost}} = ${{((dist / mpg) * cost ) | currency}} spent on this trip
+       </div>
+</div>

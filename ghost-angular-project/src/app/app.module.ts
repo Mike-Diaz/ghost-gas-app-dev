@@ -6,12 +6,14 @@ import { SimpletextComponent } from './simpletext/simpletext.component';
 import { CalculateComponent } from './calculate/calculate.component';
 
 import { FormsModule } from '@angular/forms';
+import { GascalcComponent } from './gascalc/gascalc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpletextComponent,
-    CalculateComponent
+    CalculateComponent,
+    GascalcComponent
   ],
   imports: [
     BrowserModule,
