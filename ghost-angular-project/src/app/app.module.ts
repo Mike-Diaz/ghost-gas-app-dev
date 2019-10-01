@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SimpletextComponent } from './simpletext/simpletext.component';
 import { CalculateComponent } from './calculate/calculate.component';
+import { HeaderComponent } from './header/header.component';
 
 import { FormsModule } from '@angular/forms';
 
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     SimpletextComponent,
-    CalculateComponent
+    CalculateComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
