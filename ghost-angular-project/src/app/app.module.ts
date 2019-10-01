@@ -16,7 +16,6 @@ import { AddTripFormComponent } from './add-trip-form/add-trip-form.component';
     SimpletextComponent,
     CalculateComponent,
     GascalcComponent,
-    HeaderComponent
     HeaderComponent,
     AddTripFormComponent
   ],
