@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './layout/header/header.component';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 
@@ -21,7 +22,8 @@ import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
     BrowserAnimationsModule,
     MatSliderModule,
     MatToolbarModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
