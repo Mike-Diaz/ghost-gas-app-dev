@@ -10,18 +10,19 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 // Components
 import { HeaderComponent } from './layout/header/header.component';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleViewComponent } from './vehicle-view/vehicle-view.component';
-import { MatTableModule } from '@angular/material/table';
+import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    VehicleViewComponent
+    VehicleViewComponent,
     VehicleEditComponent,
     VehicleAddComponent
   ],
@@ -36,7 +37,7 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
     MatButtonModule
   ],
   providers: [],
