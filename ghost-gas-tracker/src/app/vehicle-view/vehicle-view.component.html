@@ -18,7 +18,7 @@
       <li><strong>Plate:</strong> {{selectedVehicle.plate}}</li>
     </ul>
 
-    <table mat-table [dataSource]="selectedVehicle.mileageLog" class="mat-elevation-z8">
+    <table id="vehicle-mileage-log" mat-table [dataSource]="selectedVehicle.mileageLog" class="mat-elevation-z8">
       <ng-container matColumnDef="mpg">
         <th mat-header-cell *matHeaderCellDef> MPG </th>
         <td mat-cell *matCellDef="let entry"> {{entry.mpg}} </td>
