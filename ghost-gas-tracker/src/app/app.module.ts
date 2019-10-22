@@ -9,6 +9,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+// Components
 import { HeaderComponent } from './layout/header/header.component';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleViewComponent } from './vehicle-view/vehicle-view.component';
@@ -18,8 +21,9 @@ import { MatTableModule } from '@angular/material/table';
   declarations: [
     AppComponent,
     HeaderComponent,
-    VehicleEditComponent,
     VehicleViewComponent
+    VehicleEditComponent,
+    VehicleAddComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,7 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatIconModule,
     MatTableModule
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
