@@ -1,4 +1,31 @@
-<div>
-  <app-header></app-header>
-  <app-vehicle-edit></app-vehicle-edit>
-</div>
+<mat-grid-list cols="1" rowHeight="fit">
+  <mat-grid-tile-header><app-header></app-header></mat-grid-tile-header>
+  <mat-accordion class="user-dashboard">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-icon>local_gas_station-24px</mat-icon>
+        <mat-panel-title>Fuel Up</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-vehicle-edit></app-vehicle-edit>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-icon>show_chart-24px</mat-icon>
+        <mat-panel-title>Metrics View</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-vehicle-view></app-vehicle-view>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-icon>edit-24px</mat-icon>
+        <mat-panel-title>Vehicle Add/Edit</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-vehicle-add></app-vehicle-add>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</mat-grid-list>
+
+<!-- <app-footer class="footer"></app-footer> TODO: figure out how to make footer stick to bottom of page -->
