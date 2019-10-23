@@ -6,4 +6,17 @@ import { Component} from '@angular/core';
   styleUrls: ['./vehicle-edit.component.scss']
 })
 export class VehicleEditComponent {
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 }
