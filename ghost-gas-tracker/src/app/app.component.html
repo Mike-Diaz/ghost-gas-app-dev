@@ -1,5 +1,5 @@
-<div>
-  <app-header></app-header>
+<mat-grid-list cols="1" rowHeight="fit">
+  <mat-grid-tile-header><app-header></app-header></mat-grid-tile-header>
   <mat-accordion class="user-dashboard">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>
@@ -26,4 +26,6 @@
     </mat-expansion-panel>
 
   </mat-accordion>
-</div>
+</mat-grid-list>
+
+<!-- <app-footer class="footer"></app-footer> TODO: figure out how to make footer stick to bottom of page -->

@@ -13,12 +13,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 // Components
 import { HeaderComponent } from './layout/header/header.component';
 import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleViewComponent } from './vehicle-view/vehicle-view.component';
 import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
     HeaderComponent,
     VehicleViewComponent,
     VehicleEditComponent,
-    VehicleAddComponent
+    VehicleAddComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
     MatTableModule,
     MatButtonModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
