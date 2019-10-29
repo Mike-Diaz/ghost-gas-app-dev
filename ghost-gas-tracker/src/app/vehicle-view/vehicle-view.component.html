@@ -1,13 +1,4 @@
-<form>
-    <mat-form-field>
-      <input type="search" placeholder="Search for a vehicle..." matInput [formControl]="searchControl" [matAutocomplete]="autoSearch">
-      <mat-autocomplete #autoSearch="matAutocomplete" (optionSelected)="selectVehicle($event)" [displayWith]="searchDisplay">
-        <mat-option *ngFor="let option of filteredSearchOptions | async" [value]="option">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>  
+<app-vehicle-search-form [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
 
 <div *ngIf="selectedVehicle !== null">
     <h2>{{selectedVehicle.name}}</h2>
@@ -18,23 +9,5 @@
       <li><strong>Plate:</strong> {{selectedVehicle.plate}}</li>
     </ul>
 
-    <table id="vehicle-mileage-log" mat-table [dataSource]="selectedVehicle.mileageLog" class="mat-elevation-z8">
-      <ng-container matColumnDef="mpg">
-        <th mat-header-cell *matHeaderCellDef> MPG </th>
-        <td mat-cell *matCellDef="let entry"> {{entry.mpg}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="distance">
-        <th mat-header-cell *matHeaderCellDef> Miles Traveled </th>
-        <td mat-cell *matCellDef="let entry"> {{entry.distance}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="pricePerGallon">
-        <th mat-header-cell *matHeaderCellDef> Price Per Gallon </th>
-        <td mat-cell *matCellDef="let entry"> {{entry.pricePerGallon}} </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedMileageLogColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedMileageLogColumns;"></tr>
-    </table>    
+    <app-vehicle-metrics-table [selectedVehicle]="selectedVehicle"></app-vehicle-metrics-table>
 </div>

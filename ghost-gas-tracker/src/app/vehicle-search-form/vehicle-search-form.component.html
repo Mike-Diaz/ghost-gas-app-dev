@@ -1,0 +1,12 @@
+<form>
+    <mat-form-field>
+        <input type="search" placeholder="Search for a vehicle..." matInput [formControl]="searchControl"
+            [matAutocomplete]="autoSearch">
+        <mat-autocomplete #autoSearch="matAutocomplete" (optionSelected)="selectVehicle($event)"
+            [displayWith]="searchDisplay">
+            <mat-option *ngFor="let option of filteredSearchOptions | async" [value]="option">
+                {{option.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
