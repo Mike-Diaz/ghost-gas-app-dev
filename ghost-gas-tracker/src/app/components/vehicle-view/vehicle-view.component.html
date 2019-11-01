@@ -1,0 +1,13 @@
+<app-vehicle-search-form [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
+
+<div *ngIf="selectedVehicle !== null">
+    <h2>{{selectedVehicle.name}}</h2>
+
+    <ul id="vehicle-info">
+      <li><strong>Fleet Number:</strong> {{selectedVehicle.fleetNum}}</li>
+      <li><strong>VIN:</strong> {{selectedVehicle.vin}}</li>
+      <li><strong>Plate:</strong> {{selectedVehicle.plate}}</li>
+    </ul>
+
+    <app-vehicle-metrics-table [selectedVehicle]="selectedVehicle"></app-vehicle-metrics-table>
+</div>

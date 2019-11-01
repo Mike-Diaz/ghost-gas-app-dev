@@ -21,6 +21,8 @@ import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
 import { VehicleViewComponent } from './vehicle-view/vehicle-view.component';
 import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { VehicleSearchFormComponent } from './vehicle-search-form/vehicle-search-form.component';
+import { VehicleMetricsTableComponent } from './vehicle-metrics-table/vehicle-metrics-table.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FooterComponent } from './layout/footer/footer.component';
     VehicleViewComponent,
     VehicleEditComponent,
     VehicleAddComponent,
-    FooterComponent
+    FooterComponent,
+    VehicleSearchFormComponent,
+    VehicleMetricsTableComponent
   ],
   imports: [
     BrowserModule,
