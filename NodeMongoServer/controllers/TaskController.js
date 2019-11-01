@@ -47,8 +47,6 @@ exports.updateTask = (req, res) => {
   );
 };
 
-
-
 exports.deleteTask = (req, res) => {
   Task.remove({ _id: req.params.taskid }, (err, task) => {  // don't know who changed the name from _id
     if (err) {
