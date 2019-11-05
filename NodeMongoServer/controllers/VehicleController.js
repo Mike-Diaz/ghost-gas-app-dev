@@ -1,7 +1,7 @@
 const Vehicle = require("../models/Vehicle");
 
 exports.getAll = (req, res) => {
-    Vehicle.find({}, (err, vehicle) => {
+  Vehicle.find({}, (err, vehicle) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -12,13 +12,13 @@ exports.getAll = (req, res) => {
 };
 
 exports.getById = (req, body) => {
-    Vehicle.findById(req.params.vehicleId, (err, vehicle) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.status(200).json(vehicle);
-    });
-  };
+  Vehicle.findById(req.params.vehicleId, (err, vehicle) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(200).json(vehicle);
+  });
+};
 
 exports.new = (req, res) => {
   let newVehicle = new Vehicle(req.body);

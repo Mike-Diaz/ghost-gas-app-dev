@@ -1,7 +1,7 @@
 const FuelUp = require("../models/FuelUp");
 
 exports.getAll = (req, res) => {
-    FuelUp.find({}, (err, fuelUp) => {
+  FuelUp.find({}, (err, fuelUp) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -12,13 +12,13 @@ exports.getAll = (req, res) => {
 };
 
 exports.getById = (req, body) => {
-    FuelUp.findById(req.params.fuelUpId, (err, fuelUp) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.status(200).json(fuelUp);
-    });
-  };
+  FuelUp.findById(req.params.fuelUpId, (err, fuelUp) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(200).json(fuelUp);
+  });
+};
 
 exports.new = (req, res) => {
   let newFuelUp = new FuelUp(req.body);
