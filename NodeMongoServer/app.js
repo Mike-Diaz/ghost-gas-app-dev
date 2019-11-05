@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const taskController = require("./controllers/TaskController");
+const fuelUpController = require("./controllers/FuelUpController");
+const vehicleController = require("./controllers/VehicleController");
 const cors = require('cors')  // using this module to solve CORS problem
 // note the extra line in package.json to download this code
 
@@ -23,19 +24,30 @@ app.use(cors(corsOptions))   // bringing in the CORS code to our app
 
 // API ENDPOINTS
 // not using the Express Router code, instead just listing them
-// each of these 5 routed call one of the 5 methods defined in taskController
+// each of these 5 routed call one of the 5 methods defined in the controller
 // which in turn call Mongo Atlas, each of those 5 do a return to the client
 // notive they are "keyed", but HTTP request type, get, put, etc
 app
-  .route("/tasks")
-  .get(taskController.listAllTasks)
-  .post(taskController.createNewTask);
+  .route("/fuelup")
+  .get(fuelUpController.getAll)
+  .post(fuelUpController.new);
 
 app
-  .route("/tasks/:taskid")
-  .get(taskController.readTask)
-  .put(taskController.updateTask)
-  .delete(taskController.deleteTask);
+  .route("/fuelup/:fuelUpId")
+  .get(fuelUpController.getById)
+  .put(fuelUpController.update)
+  .delete(fuelUpController.delete);
+
+app
+  .route("/vehicle")
+  .get(vehicleController.getAll)
+  .post(vehicleController.new);
+
+app
+  .route("/vehicle/:vehicleId")
+  .get(vehicleController.getById)
+  .put(vehicleController.update)
+  .delete(vehicleController.delete);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
