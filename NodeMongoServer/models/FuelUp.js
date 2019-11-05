@@ -15,12 +15,12 @@ const FuelUpSchema = new Schema({
         type: Number,
         required: true
     },
-    vehicleID: {
+    vehicleId: {
         type: Number,
         required: true
     },
     fuelUpDate: {
-        type: String,
+        type: Date,
         required: true
     },
     miles: {

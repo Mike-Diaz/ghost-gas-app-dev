@@ -6,16 +6,13 @@ const VehicleSchema = new Schema({
         type: String,
         required: false
     },
-    vehicleID: {
-        type: Number,
-        required: true
-    },
     createdOn: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true
     },
-    employeeId: { // TODO: This should auto populate with the employee ID inserting the data
-        type: Number, // This is to show which employee created the vehicle
+    vehicleNum: {
+        type: Number,
         required: true
     },
     make: {
@@ -33,6 +30,10 @@ const VehicleSchema = new Schema({
     vin: {
         type: String,
         required: false // Some fleets may include vehicles/equipment with no VIN
+    },
+    employeeId: { // TODO: This should auto populate with the employee ID inserting the data
+        type: Number, // This is to show which employee created the vehicle
+        required: true
     }
 });
 
