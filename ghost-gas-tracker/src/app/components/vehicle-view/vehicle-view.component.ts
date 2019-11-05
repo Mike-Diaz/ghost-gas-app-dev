@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehicle } from '../../../data/mock-vehicles';
+import {Vehicle} from "../../models/vehicle";
 
 @Component({
   selector: 'app-vehicle-view',
