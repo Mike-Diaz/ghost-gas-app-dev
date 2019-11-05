@@ -11,7 +11,7 @@ exports.getAll = (req, res) => {
   });
 };
 
-exports.getById = (req, body) => {
+exports.getById = (req, res) => {
   FuelUp.findById(req.params.fuelUpId, (err, fuelUp) => {
     if (err) {
       res.status(500).send(err);

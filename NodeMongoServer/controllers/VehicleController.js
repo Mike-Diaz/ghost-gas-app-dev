@@ -11,7 +11,7 @@ exports.getAll = (req, res) => {
   });
 };
 
-exports.getById = (req, body) => {
+exports.getById = (req, res) => {
   Vehicle.findById(req.params.vehicleId, (err, vehicle) => {
     if (err) {
       res.status(500).send(err);
