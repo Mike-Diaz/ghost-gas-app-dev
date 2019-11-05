@@ -17,12 +17,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 // Components
 import { HeaderComponent } from './layout/header/header.component';
-import { VehicleEditComponent } from './vehicle-edit/vehicle-edit.component';
-import { VehicleViewComponent } from './vehicle-view/vehicle-view.component';
-import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
+import { VehicleEditComponent } from './components/vehicle-edit/vehicle-edit.component';
+import { VehicleViewComponent } from './components/vehicle-view/vehicle-view.component';
+import { VehicleAddComponent } from  './components/vehicle-add/vehicle-add.component';
 import { FooterComponent } from './layout/footer/footer.component';
-import { VehicleSearchFormComponent } from './vehicle-search-form/vehicle-search-form.component';
-import { VehicleMetricsTableComponent } from './vehicle-metrics-table/vehicle-metrics-table.component';
+import { VehicleSearchFormComponent } from './components/vehicle-search-form/vehicle-search-form.component';
+import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table/vehicle-metrics-table.component';
 
 @NgModule({
   declarations: [
