@@ -12,11 +12,11 @@ const FuelUpSchema = new Schema({
         required: true
     },
     employeeId: { // TODO: This should auto populate with the employee ID inserting the data
-        type: Number,
+        type: String,
         required: true
     },
     vehicleId: {
-        type: Number,
+        type: String,
         required: true
     },
     fuelUpDate: {

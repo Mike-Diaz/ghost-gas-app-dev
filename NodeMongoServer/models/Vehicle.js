@@ -32,7 +32,7 @@ const VehicleSchema = new Schema({
         required: false // Some fleets may include vehicles/equipment with no VIN
     },
     employeeId: { // TODO: This should auto populate with the employee ID inserting the data
-        type: Number, // This is to show which employee created the vehicle
+        type: String, // This is to show which employee created the vehicle
         required: true
     }
 });
