@@ -37,4 +37,4 @@ const FuelUpSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("FuelUps", FuelUpSchema);
+module.exports = mongoose.model("FuelUp", FuelUpSchema);
