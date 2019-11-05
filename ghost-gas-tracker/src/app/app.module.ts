@@ -17,7 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 // Components
 import { HeaderComponent } from './layout/header/header.component';
-import { VehicleEditComponent } from './components/vehicle-edit/vehicle-edit.component';
+import { VehicleFuelUpComponent } from './components/vehicle-fuel-up/vehicle-fuel-up.component';
 import { VehicleViewComponent } from './components/vehicle-view/vehicle-view.component';
 import { VehicleAddComponent } from  './components/vehicle-add/vehicle-add.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -30,7 +30,7 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     HeaderComponent,
     VehicleViewComponent,
-    VehicleEditComponent,
+    VehicleFuelUpComponent,
     VehicleAddComponent,
     FooterComponent,
     VehicleSearchFormComponent,
