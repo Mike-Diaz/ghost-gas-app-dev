@@ -23,6 +23,7 @@ import { VehicleAddComponent } from  './components/vehicle-add/vehicle-add.compo
 import { FooterComponent } from './layout/footer/footer.component';
 import { VehicleSearchFormComponent } from './components/vehicle-search-form/vehicle-search-form.component';
 import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table/vehicle-metrics-table.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
