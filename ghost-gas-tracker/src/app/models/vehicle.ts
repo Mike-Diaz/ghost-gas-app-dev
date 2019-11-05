@@ -1,6 +1,6 @@
-export interface Vehicle {
-  _id: string;
-  createdOn: Date;
+export class Vehicle {
+  _id?: string;
+  createdOn?: Number = Date.now();
   vehicleNum: Number;
   make: string;
   model: string;

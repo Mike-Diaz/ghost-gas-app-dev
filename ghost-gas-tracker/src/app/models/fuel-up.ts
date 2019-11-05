@@ -1,6 +1,6 @@
-export interface FuelUp {
-  _id: string;
-  createdOn: Date;
+export class FuelUp {
+  _id?: string;
+  createdOn?: Number = Date.now();
   employeeId: string;
   vehicleId: string;
   fuelUpDate: Date;

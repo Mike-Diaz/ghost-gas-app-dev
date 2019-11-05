@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-import { Vehicle, MOCK_VEHICLES } from 'src/data/mock-vehicles';
+import {Vehicle} from "../../models/vehicle";
+import {VehicleService} from "../../services/vehicle.service";
 
 @Component({
   selector: 'app-vehicle-search-form',
@@ -13,11 +14,15 @@ import { Vehicle, MOCK_VEHICLES } from 'src/data/mock-vehicles';
 export class VehicleSearchFormComponent implements OnInit {
   @Input() selectedVehicle: Vehicle = null;
   @Output() selectedVehicleChange = new EventEmitter<Vehicle>();
-  searchOptions: Vehicle[] = MOCK_VEHICLES; // Mock searchOptions for dev. This later can be passed from the parent components if necessary.
+  searchOptions: Vehicle[] = [];
   filteredSearchOptions: Observable<Vehicle[]>;
   searchControl = new FormControl('');
 
-  constructor() { }
+  constructor(
+    private vehicleService: VehicleService
+  ) {
+    vehicleService.getAll().subscribe(vehicles => this.searchOptions = vehicles);
+  }
 
   ngOnInit() {
     this.filteredSearchOptions = this.searchControl.valueChanges
@@ -28,13 +33,13 @@ export class VehicleSearchFormComponent implements OnInit {
   }
 
   private _filterSearch(vehicle: Vehicle) {
-    const filterValue = vehicle.name ? vehicle.name.toLowerCase() : '';
+    const filterValue = vehicle.vehicleNum ? vehicle.vehicleNum.toString() : '';
 
-    return this.searchOptions.filter(option => option.name.toLowerCase().includes(filterValue));
+    return this.searchOptions.filter(option => option.vehicleNum.toString().includes(filterValue));
   }
 
   searchDisplay(option: Vehicle) {
-    return option.name;
+    return option.vehicleNum;
   }
 
   selectVehicle(event: MatAutocompleteSelectedEvent) {

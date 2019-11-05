@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const VehicleSchema = new Schema({
-    _id: {
-        type: String,
-        required: false
-    },
+    // _id is automatically generated in Schema object
     createdOn: {
         type: Date,
         default: Date.now,
