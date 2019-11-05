@@ -28,12 +28,12 @@ export class VehicleSearchFormComponent implements OnInit {
     this.filteredSearchOptions = this.searchControl.valueChanges
       .pipe(
         startWith(''),
-        map(vehicle => this._filterSearch(vehicle))
+        map(searchInput => this._filterSearch(searchInput))
       );
   }
 
-  private _filterSearch(vehicle: Vehicle) {
-    const filterValue = vehicle.vehicleNum ? vehicle.vehicleNum.toString() : '';
+  private _filterSearch(searchInput: string) {
+    const filterValue = searchInput.length ? searchInput : '';
 
     return this.searchOptions.filter(option => option.vehicleNum.toString().includes(filterValue));
   }
