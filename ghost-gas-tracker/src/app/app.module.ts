@@ -23,6 +23,7 @@ import { VehicleAddComponent } from  './vehicle-add/vehicle-add.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { VehicleSearchFormComponent } from './vehicle-search-form/vehicle-search-form.component';
 import { VehicleMetricsTableComponent } from './vehicle-metrics-table/vehicle-metrics-table.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { VehicleMetricsTableComponent } from './vehicle-metrics-table/vehicle-me
     VehicleAddComponent,
     FooterComponent,
     VehicleSearchFormComponent,
-    VehicleMetricsTableComponent
+    VehicleMetricsTableComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
