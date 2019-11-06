@@ -15,7 +15,7 @@ require("./config/db");
 
 const app = express();
 
-const port = process.env.PORT || 3000;  // setting the port number for this server
+const port = 3000;  // setting the port number for this server
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
