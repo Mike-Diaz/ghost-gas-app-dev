@@ -1,11 +1,11 @@
 import { Component} from '@angular/core';
 
 @Component({
-  selector: 'app-vehicle-edit',
-  templateUrl: './vehicle-edit.component.html',
-  styleUrls: ['./vehicle-edit.component.scss']
+  selector: 'app-vehicle-fuel-up',
+  templateUrl: './vehicle-fuel-up.component.html',
+  styleUrls: ['./vehicle-fuel-up.component.scss']
 })
-export class VehicleEditComponent {
+export class VehicleFuelUpComponent {
   step = 0;
 
   setStep(index: number) {

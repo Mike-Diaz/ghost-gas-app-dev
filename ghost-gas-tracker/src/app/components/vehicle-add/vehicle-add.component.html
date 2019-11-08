@@ -1,39 +1,38 @@
 <div>
-
-    <div class="vehicle-add-container">
+    <form class="vehicle-add-container" #form="ngForm" (ngSubmit)="onSubmit(form)">
         <mat-form-field>
-            <input matInput placeholder="Vehicle Number">
+            <input type="number" name="vehicleNum" ngModel required matInput placeholder="Vehicle Number">
         </mat-form-field>
 
         <mat-divider></mat-divider>
 
         <mat-form-field>
-            <input matInput placeholder="Make">
+            <input name="make" ngModel required matInput placeholder="Make">
         </mat-form-field>
 
         <mat-divider></mat-divider>
 
         <mat-form-field>
-            <input matInput placeholder="Model">
+            <input name="model" ngModel required matInput placeholder="Model">
         </mat-form-field>
 
         <mat-divider></mat-divider>
 
         <mat-form-field>
-            <input matInput placeholder="Year">
+            <input name="year" ngModel required matInput placeholder="Year">
         </mat-form-field>
 
         <mat-divider></mat-divider>
 
         <mat-form-field>
-            <input matInput placeholder="VIN">
+            <input name="vin" ngModel matInput placeholder="VIN">
         </mat-form-field>
 
         <mat-divider></mat-divider>
 
-        <button mat-raised-button>
+        <button mat-raised-button type="submit">
             <mat-icon aria-hidden="false" aria-label="Add Vehicle Information">save-24px</mat-icon>
         </button>
 
-    </div>
+    </form>
 </div>

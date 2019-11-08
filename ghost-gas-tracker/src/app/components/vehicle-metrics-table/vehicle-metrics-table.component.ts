@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Vehicle } from 'src/data/mock-vehicles';
+import { Vehicle } from 'src/data/mock-vehicles'; // TODO: replace mock
 
 @Component({
   selector: 'app-vehicle-metrics-table',
