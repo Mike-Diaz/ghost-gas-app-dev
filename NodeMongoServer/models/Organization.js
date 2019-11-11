@@ -11,7 +11,7 @@ const OrganizationSchema = new Schema({
     credentialId: { // TODO: This should be received by Google oAuth credentials tokenizer.
         type: String
     },
-    organizationID: { // TODO: This should auto populate with the employee ID inserting the data. FK
+    organizationID: { // TODO: This should auto populate with the employee ID inserting the data. PK
         type: String,
         required: true
     },
@@ -27,4 +27,4 @@ const OrganizationSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("FuelUp", FuelUpSchema);
+module.exports = mongoose.model("Organization", OrganizationSchema);

@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// This is what a developer would be assigned. They are allowed the highest priviledge.
-const SuperUserSchema = new Schema({
+const OrgAdminSchema = new Schema({
     // _id is automatically generated in Schema object
     createdOn: {
         type: Date,
@@ -12,7 +11,7 @@ const SuperUserSchema = new Schema({
     credentialId: { // TODO: This should be received by Google oAuth credentials tokenizer.
         type: String
     },
-    organizationID: { // TODO: This should auto populate with the employee ID inserting the data. FK. This would be all Orgs.. 
+    organizationID: { // TODO: This should auto populate with the employee ID inserting the data. FK
         type: String,
         required: true
     },
@@ -21,11 +20,11 @@ const SuperUserSchema = new Schema({
         required: true
     },
     employeeIds: {
-        type: Object // TODO: this should hold a list of all employees belonging to this organization including admins. This would be all eployees.
+        type: Object // TODO: this should hold a list of all employees belonging to this organization including admins.
     },
     priviledgeLevel: {
         type: String
     }
 });
 
-module.exports = mongoose.model("FuelUp", FuelUpSchema);
+module.exports = mongoose.model("OrgAdmin", OrgAdminSchema);

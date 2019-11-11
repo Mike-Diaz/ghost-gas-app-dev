@@ -27,4 +27,4 @@ const EmployeeSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("FuelUp", FuelUpSchema);
+module.exports = mongoose.model("Employee", EmployeeSchema);
