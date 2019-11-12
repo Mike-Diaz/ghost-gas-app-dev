@@ -49,6 +49,30 @@ app
   .put(vehicleController.update)
   .delete(vehicleController.delete);
 
+//ouath implementation
+
+let passport = require('passport'),
+auth = require('./config/auth');
+
+auth(passport);
+app.use(passport.initialize());
+app.get('/', (req, res) => {
+    res.json({
+        status: 'session cookie not set'
+    });
+});
+app.get('/auth/google', passport.authenticate('google', {
+    scope: ['https://www.googleapis.com/auth/userinfo.profile']
+}));
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        failureRedirect: '/'
+    }),
+    (req, res) => {}
+);
+
+//server lisetn
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
