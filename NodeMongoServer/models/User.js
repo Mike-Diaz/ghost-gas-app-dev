@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     credentialId: { // TODO: This should be received by Google oAuth credentials tokenizer.
         type: String
     },
-    organizationID: { // TODO: This should auto populate with the employee ID inserting the data. FK. This would be all Orgs.. 
+    organizationId: { // TODO: This should auto populate with the employee ID inserting the data. FK. This would be all Orgs.. 
         type: String,
         required: true
     },
