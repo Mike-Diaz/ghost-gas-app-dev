@@ -25,6 +25,7 @@ import { VehicleSearchFormComponent } from './components/vehicle-search-form/veh
 import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table/vehicle-metrics-table.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     VehicleSearchFormComponent,
     VehicleMetricsTableComponent,
-    HomeComponent
+    HomeComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,
