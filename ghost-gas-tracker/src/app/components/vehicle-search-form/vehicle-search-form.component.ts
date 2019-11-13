@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-import {Vehicle} from "../../models/vehicle";
+import {Vehicle} from "../../models/vehicle.model";
 import {VehicleService} from "../../services/vehicle.service";
 
 @Component({
