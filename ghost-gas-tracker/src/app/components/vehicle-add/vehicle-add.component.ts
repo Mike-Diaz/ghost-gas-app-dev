@@ -12,11 +12,6 @@ export class VehicleAddComponent implements OnInit {
   @ViewChild('vehicleSearchForm', {static: false}) vehicleSearchForm;
   @ViewChild('form', {static: false}) form: NgForm;
   selectedVehicle: Vehicle = {} as Vehicle;
-  inputVehicleNum = null;
-  inputMake = null;
-  inputModel = null;
-  inputYear = null;
-  inputVin = null;
 
   constructor(
     private vehicleService: VehicleService
@@ -24,20 +19,6 @@ export class VehicleAddComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  step = 0;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
   }
 
   resetForm() {

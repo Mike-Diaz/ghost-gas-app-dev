@@ -1,8 +1,11 @@
+<p>Add new vehicle using the form below or search for a vehicle number to edit:</p>
 <app-vehicle-search-form #vehicleSearchForm [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
 
 <div *ngIf="selectedVehicle._id">
   <p>Editing vehicle ID: {{selectedVehicle._id}}&nbsp;&nbsp;<button mat-raised-button (click)="resetForm()">Cancel</button></p>
 </div>
+
+<br>
 
 <form class="vehicle-add-container" #form="ngForm" (ngSubmit)="onSubmit()">
   <mat-form-field>

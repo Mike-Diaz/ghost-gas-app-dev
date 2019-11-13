@@ -45,7 +45,7 @@ const UserSchema = new Schema({
     placesLived: {
         type: String
     },
-    laguage: {
+    language: {
         type: String
     },
     emails: {

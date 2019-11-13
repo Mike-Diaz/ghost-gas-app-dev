@@ -8,7 +8,7 @@ const FuelUpSchema = new Schema({
         default: Date.now,
         required: true
     },
-    employeeId: { // TODO: This should auto populate with the employee ID inserting the data
+    userId: { // TODO: This should auto populate with the employee ID inserting the data
         type: String,
         required: true
     },

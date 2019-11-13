@@ -1,4 +1,5 @@
 const FuelUp = require("../models/FuelUp");
+const mongoose = require("mongoose");
 
 exports.getAll = (req, res) => {
   FuelUp.find({}, (err, fuelUp) => {

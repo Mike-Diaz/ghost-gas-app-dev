@@ -1,20 +1,35 @@
-<div>
+<p>Search for a vehicle number to add a fuel-up to:</p>
+<app-vehicle-search-form #vehicleSearchForm [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
 
-  <div class="vehicle-fuel-up-container">
+<br>
+
+<div *ngIf="selectedVehicle._id">
+  <p>Selected vehicle ID: {{selectedVehicle._id}}&nbsp;&nbsp;<button mat-raised-button (click)="resetForm()">Cancel</button>
+  </p>
+
+  <form class="vehicle-fuel-up-container" #form="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <input matInput placeholder="Miles Per Gallon">
+      <input name="fuelUpDate" ngModel matInput placeholder="Fuel-up date" [matDatepicker]="fuelUpDatePicker">
+      <mat-datepicker-toggle matSuffix [for]="fuelUpDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #fuelUpDatePicker></mat-datepicker>
     </mat-form-field>
 
     <mat-divider></mat-divider>
 
     <mat-form-field>
-      <input matInput placeholder="Miles traveled">
+      <input name="miles" ngModel matInput placeholder="Miles traveled">
     </mat-form-field>
 
     <mat-divider></mat-divider>
 
     <mat-form-field>
-      <input matInput placeholder="Price Per Gallon">
+      <input name="gallons" ngModel matInput placeholder="Gallons">
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field>
+      <input name="totalCost" ngModel matInput placeholder="Total cost">
     </mat-form-field>
 
     <mat-divider></mat-divider>
@@ -22,6 +37,5 @@
     <button mat-raised-button>
       <mat-icon aria-hidden="false" aria-label="Save Fuel-Up">save-24px</mat-icon>
     </button>
-
-  </div>
+  </form>
 </div>

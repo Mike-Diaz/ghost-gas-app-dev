@@ -5,5 +5,5 @@ export class User {
     vehicleIds: Array<string>;
     privilegeLevel: string;
     //credentialId: string;
-    roles: Array<string>;
+    role: string;
 }
