@@ -10,10 +10,10 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 }
 
+
 // this brings in and sets up the monog db instance connection
 require("./config/db");
-
-const app = express();
+app = express();
 
 const port = 3000;  // setting the port number for this server
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,6 +48,57 @@ app
   .get(vehicleController.getById)
   .put(vehicleController.update)
   .delete(vehicleController.delete);
+
+
+
+//ouath implementation
+
+passport = require('passport'),
+auth = require('./config/auth'),
+cookieParser = require('cookie-parser'),
+cookieSession = require('cookie-session');
+
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['123']
+}));
+app.use(cookieParser());
+
+auth(passport);
+app.use(passport.initialize());
+app.get('/', (req, res) => {
+  if (req.session.token) {
+      res.cookie('token', req.session.token);
+      res.json({
+          status: 'session cookie set'
+      });
+  } else {
+      res.cookie('token', '')
+      res.json({
+          status: 'session cookie not set'
+      });
+  }
+});
+app.get('/auth/google', passport.authenticate('google', {
+    scope: ['https://www.googleapis.com/auth/userinfo.profile']
+}));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {failureRedirect:'/'}),
+    (req, res) => {
+        req.session.token = req.user.token;
+        res.redirect('/');
+    }
+);
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  req.session = null;
+  res.redirect('/');
+});
+
+//server lisetn
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
