@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {VehicleService} from "../../services/vehicle.service";
 import {NgForm} from "@angular/forms";
 import {Vehicle} from "../../models/vehicle.model";
@@ -9,7 +9,9 @@ import {Vehicle} from "../../models/vehicle.model";
   styleUrls: ['./vehicle-add.component.scss']
 })
 export class VehicleAddComponent implements OnInit {
-  selectedVehicle: Vehicle = null;
+  @ViewChild('vehicleSearchForm', {static: false}) vehicleSearchForm;
+  @ViewChild('form', {static: false}) form: NgForm;
+  selectedVehicle: Vehicle = {} as Vehicle;
   inputVehicleNum = null;
   inputMake = null;
   inputModel = null;
@@ -38,22 +40,41 @@ export class VehicleAddComponent implements OnInit {
     this.step--;
   }
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      const newVehicle: Vehicle = {
-        vehicleNum: form.value.vehicleNum,
-        make: form.value.make,
-        model: form.value.model,
-        year: form.value.year,
-        vin: form.value.vin,
-        employeeId: "1" // TODO: retrieve employeeId (required length > 0)
+  resetForm() {
+    this.form.resetForm('');
+    this.selectedVehicle = {} as Vehicle;
+
+    // Reset the search form
+    this.vehicleSearchForm.clearSearch();
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      const saveVehicle: Vehicle = {
+        vehicleNum: this.form.value.vehicleNum,
+        make: this.form.value.make,
+        model: this.form.value.model,
+        year: this.form.value.year,
+        vin: this.form.value.vin,
+        userId: "1" // TODO: retrieve userId (required length > 0)
       };
 
-      // We must call subscribe() for new() to be executed
-      this.vehicleService.new(newVehicle).subscribe((result) => {
-        console.log('Vehicle created!');
-        form.resetForm('');
-      });
+      if (this.selectedVehicle._id) {
+        // Editing
+        saveVehicle._id = this.selectedVehicle._id;
+
+        this.vehicleService.update(saveVehicle).subscribe((result) => {
+          console.log('Vehicle updated!');
+        });
+      } else {
+        // New
+        // We must call subscribe() for new() to be executed
+        this.vehicleService.new(saveVehicle).subscribe((result) => {
+          console.log('Vehicle created!');
+        });
+      }
+
+      this.resetForm();
     }
   }
 }

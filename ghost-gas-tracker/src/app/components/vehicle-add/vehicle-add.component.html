@@ -1,41 +1,42 @@
-<app-vehicle-search-form [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
+<app-vehicle-search-form #vehicleSearchForm [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
 
-<div *ngIf="selectedVehicle !== null">
-    <form class="vehicle-add-container" #form="ngForm" (ngSubmit)="onSubmit(form)">
-        <mat-form-field>
-            <input type="number" name="vehicleNum" ngModel required matInput placeholder="Vehicle Number"
-                [(ngModel)]="selectedVehicle.vehicleNum">
-        </mat-form-field>
-
-        <mat-divider></mat-divider>
-
-        <mat-form-field>
-            <input name="make" ngModel required matInput placeholder="Make" [(ngModel)]="selectedVehicle.make">
-        </mat-form-field>
-
-        <mat-divider></mat-divider>
-
-        <mat-form-field>
-            <input name="model" ngModel required matInput placeholder="Model" [(ngModel)]="selectedVehicle.model">
-        </mat-form-field>
-
-        <mat-divider></mat-divider>
-
-        <mat-form-field>
-            <input name="year" ngModel required matInput placeholder="Year" [(ngModel)]="selectedVehicle.year">
-        </mat-form-field>
-
-        <mat-divider></mat-divider>
-
-        <mat-form-field>
-            <input name="vin" ngModel matInput placeholder="VIN" [(ngModel)]="selectedVehicle.vin">
-        </mat-form-field>
-
-        <mat-divider></mat-divider>
-
-        <button mat-raised-button type="submit">
-            <mat-icon aria-hidden="false" aria-label="Add Vehicle Information">save-24px</mat-icon>
-        </button>
-
-    </form>
+<div *ngIf="selectedVehicle._id">
+  <p>Editing vehicle ID: {{selectedVehicle._id}}&nbsp;&nbsp;<button mat-raised-button (click)="resetForm()">Cancel</button></p>
 </div>
+
+<form class="vehicle-add-container" #form="ngForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input type="number" name="vehicleNum" ngModel required matInput placeholder="Vehicle Number"
+           [(ngModel)]="selectedVehicle.vehicleNum">
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <mat-form-field>
+    <input name="make" ngModel required matInput placeholder="Make" [(ngModel)]="selectedVehicle.make">
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <mat-form-field>
+    <input name="model" ngModel required matInput placeholder="Model" [(ngModel)]="selectedVehicle.model">
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <mat-form-field>
+    <input name="year" ngModel required matInput placeholder="Year" [(ngModel)]="selectedVehicle.year">
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <mat-form-field>
+    <input name="vin" ngModel matInput placeholder="VIN" [(ngModel)]="selectedVehicle.vin">
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <button mat-raised-button type="submit">
+    <mat-icon aria-hidden="false" aria-label="Add Vehicle Information">save-24px</mat-icon>
+  </button>
+</form>
