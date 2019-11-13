@@ -9,9 +9,6 @@ const UserSchema = new Schema({
         default: Date.now,
         required: true
     },
-    credentialId: { // TODO: This should be received by Google oAuth credentials tokenizer.
-        type: String
-    },
     organizationId: { // TODO: This should auto populate with the employee ID inserting the data. FK. This would be all Orgs.. Maybe array since superuser role will have all orgs?
         type: String,
         required: true
@@ -20,12 +17,50 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    employeeIds: {
-        type: Object // TODO: this should hold a list of all employees belonging to this organization including admins. This would be all eployees.
+    role: {
+        type: String // This will contain what roles the user is assigned. SuperUser, Org, Admin, Employee.
     },
-    roles: {
-        type: Array // This will contain what roles the user is assigned. SuperUser, Org, Admin, Employee.
+    // From passport oAuth
+    id: {
+        type: String
+    },
+    name: {
+        type: String
+    },
+    displayName: {
+        type: String
+    },
+    birthday: {
+        type: String
+    },
+    relationship: {
+        type: String
+    },
+    isPerson: {
+        type: String
+    },
+    isPlusUser: {
+        type: String
+    },
+    placesLived: {
+        type: String
+    },
+    laguage: {
+        type: String
+    },
+    emails: {
+        type: String
+    },
+    gender: {
+        type: String
+    },
+    picture: {
+        type: String
+    },
+    coverPhoto: {
+        type: String
     }
+
 });
 
 module.exports = mongoose.model("SuperUser", UserSchema);
