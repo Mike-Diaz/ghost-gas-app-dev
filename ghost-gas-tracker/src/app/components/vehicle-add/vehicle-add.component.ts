@@ -9,6 +9,7 @@ import {Vehicle} from "../../models/vehicle";
   styleUrls: ['./vehicle-add.component.scss']
 })
 export class VehicleAddComponent implements OnInit {
+  selectedVehicle: Vehicle = null;
   inputVehicleNum = null;
   inputMake = null;
   inputModel = null;
