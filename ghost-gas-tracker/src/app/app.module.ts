@@ -25,6 +25,10 @@ import { VehicleSearchFormComponent } from './components/vehicle-search-form/veh
 import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table/vehicle-metrics-table.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
+import { OrganizationTableComponent } from './components/organization-table/organization-table.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { HomeComponent } from './components/home/home.component';
     FooterComponent,
     VehicleSearchFormComponent,
     VehicleMetricsTableComponent,
-    HomeComponent
+    HomeComponent,
+    UserTableComponent,
+    OrganizationTableComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,9 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonModule,
     MatDividerModule,
     MatExpansionModule,
-    MatGridListModule
+    MatGridListModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

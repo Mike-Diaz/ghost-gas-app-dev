@@ -6,5 +6,5 @@ export class Vehicle {
   model: string;
   year: string;
   vin: string;
-  employeeId: string;
+  userId: string;
 }

@@ -1,7 +1,7 @@
 export class FuelUp {
   _id?: string;
   createdOn?: Number = Date.now();
-  employeeId: string;
+  userId: string;
   vehicleId: string;
   fuelUpDate: Date;
   miles: Number;

@@ -1,4 +1,5 @@
 const Vehicle = require("../models/Vehicle");
+const mongoose = require("mongoose");
 
 exports.getAll = (req, res) => {
   Vehicle.find({}, (err, vehicle) => {

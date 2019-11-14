@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
+        "postinstall": "cd ./NodeMongoServer && npm install && cd ../ghost-gas-tracker && npm install",
         "start": "concurrently \"npm run backend\" \"npm run frontend\"",
         "backend": "cd ./NodeMongoServer && npm run dev",
         "frontend": "cd ./ghost-gas-tracker && ng serve"
