@@ -29,6 +29,7 @@ import { UserTableComponent } from './components/user-table/user-table.component
 import { OrganizationTableComponent } from './components/organization-table/organization-table.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatExpansionModule,
     MatGridListModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
