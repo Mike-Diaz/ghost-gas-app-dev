@@ -53,7 +53,7 @@ export class OrganizationSearchFormComponent implements OnInit {
     this.searchControl.setValue('');
     this.selectedOrganization = {} as Organization;
 
-    // Retrieve vehicles again
-    this.orgStoreService.fetchVehicleSearchOptions();
+    // Retrieve organization again
+    this.orgStoreService.fetchOrganizationSearchOptions();
   }
 }

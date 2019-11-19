@@ -13,7 +13,7 @@ exports.getAll = (req, res) => {
 };
 
 exports.getById = (req, res) => {
-  Organization.findById(req.params.fuelUpId, (err, organization) => {
+  Organization.findById(req.params.organizationId, (err, organization) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -22,9 +22,9 @@ exports.getById = (req, res) => {
 };
 
 exports.new = (req, res) => {
-  let newFuelUp = new Organization(req.body);
-  console.log(newFuelUp);
-  newFuelUp.save((err, organization) => {
+  let newOrganization = new Organization(req.body);
+  console.log(newOrganization);
+  newOrganization.save((err, organization) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -49,7 +49,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  Organization.remove({ _id: req.params.organizationId }, (err, organization) => {  // don't know who changed the name from _id
+  Organization.remove({ _id: req.params.organizationId }, (err, organization) => {
     if (err) {
       res.status(404).send(err);
     }

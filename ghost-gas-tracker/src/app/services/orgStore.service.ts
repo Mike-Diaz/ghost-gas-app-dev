@@ -13,10 +13,10 @@ export class OrgStoreService {
   constructor(
     private organizationService: OrganizationService
   ) {
-    this.fetchVehicleSearchOptions();
+    this.fetchOrganizationSearchOptions();
   }
 
-  fetchVehicleSearchOptions() {
+  fetchOrganizationSearchOptions() {
     this.organizationService.getAll().subscribe(organizations => this._searchOptions.next(organizations));
   }
 }

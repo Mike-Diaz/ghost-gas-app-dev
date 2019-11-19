@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const fuelUpController = require("./controllers/FuelUpController");
 const vehicleController = require("./controllers/VehicleController");
 const organizationController = require("./controllers/OrganizationController");
+const userController = require("./controllers/UserController");
 const cors = require('cors')  // using this module to solve CORS problem
 // note the extra line in package.json to download this code
 
@@ -61,7 +62,16 @@ app
   .put(organizationController.update)
   .delete(organizationController.delete);
 
+app
+  .route("/user")
+  .get(userController.getAll)
+  .post(userController.new);
 
+app
+  .route("/user/:userId")
+  .get(userController.getById)
+  .put(userController.update)
+  .delete(userController.delete);
 
 //ouath implementation
 
@@ -93,7 +103,7 @@ app.get('/', (req, res) => {
   }
 });
 app.get('/auth/google', passport.authenticate('google', {
-    scope: ['email', 'profile']
+  scope: ['email', 'profile']
 }));
 
 app.get('/auth/google/callback',
@@ -118,7 +128,7 @@ function routeGuard(req, res, next) {
 
 //example appget
 //app.get('/some_path',checkAuthentication,function(req,res){
-    //do something only if user is authenticated
+//do something only if user is authenticated
 //});
 
 //server lisetn

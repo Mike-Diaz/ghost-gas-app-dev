@@ -1,9 +1,19 @@
 export class User {
     _id?: string;
     createdOn?: number = Date.now();
-    organizationIds: Array<string>;
-    vehicleIds: Array<string>;
-    privilegeLevel: string;
-    //credentialId: string;
+    organizationId: number;
     role: string;
+    userId: number;
+    name: string;
+    displayName: string;
+    birthday: string;
+    relationship: string;
+    isPerson: boolean;
+    isPlusUser: boolean;
+    placesLived: string;
+    language: string;
+    emails: string;
+    gender: string;
+    picture: string;
+    coverPhoto: string;
 }
