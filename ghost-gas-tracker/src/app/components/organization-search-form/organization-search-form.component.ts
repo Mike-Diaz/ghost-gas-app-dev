@@ -43,7 +43,7 @@ export class OrganizationSearchFormComponent implements OnInit {
     return option.organizationId;
   }
 
-  selectVehicle(event: MatAutocompleteSelectedEvent) {
+  selectOrganization(event: MatAutocompleteSelectedEvent) {
     this.selectedOrganization = event.option.value;
     this.selectedOrganizationChange.emit(this.selectedOrganization);
   }

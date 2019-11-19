@@ -1,3 +1,40 @@
-<p>organization-table works!</p>
+<p>Add new Organization using the form below or search for an Organization ID to edit:</p>
+<app-organization-search-form #organizationSearchForm [(selectedOrganization)]="selectedOrganization"></app-organization-search-form>
 
-<app-organization-search-form></app-organization-search-form>
+<div *ngIf="selectedOrganization._id">
+    <p>Editing Organization ID: {{selectedOrganization._id}}&nbsp;&nbsp;<button mat-raised-button (click)="resetForm()">Cancel</button></p>
+  </div>
+  
+  <br>
+  
+  <form class="organization-add-container" #form="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input type="number" name="organizationId" ngModel required matInput placeholder="Organization ID"
+             [(ngModel)]="selectedOrganization.organizationId">
+    </mat-form-field>
+  
+    <mat-divider></mat-divider>
+  
+    <mat-form-field>
+      <input name="name" ngModel required matInput placeholder="Name" [(ngModel)]="selectedOrganization.name">
+    </mat-form-field>
+  
+    <mat-divider></mat-divider>
+  
+    <mat-form-field>
+      <input name="address" ngModel required matInput placeholder="Address" [(ngModel)]="selectedOrganization.address">
+    </mat-form-field>
+  
+    <mat-divider></mat-divider>
+  
+    <mat-form-field>
+      <input name="phone" ngModel required matInput placeholder="Phone" [(ngModel)]="selectedOrganization.phone">
+    </mat-form-field>
+  
+    <mat-divider></mat-divider>
+  
+    <button mat-raised-button type="submit">
+      <mat-icon aria-hidden="false" aria-label="Add Organization Information">save-24px</mat-icon>
+    </button>
+  </form>
+  
