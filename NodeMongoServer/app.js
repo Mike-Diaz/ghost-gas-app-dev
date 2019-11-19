@@ -93,7 +93,7 @@ app.get('/', (req, res) => {
   }
 });
 app.get('/auth/google', passport.authenticate('google', {
-  scope: ['https://www.googleapis.com/auth/userinfo.profile']
+    scope: ['email', 'profile']
 }));
 
 app.get('/auth/google/callback',
@@ -109,6 +109,17 @@ app.get('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
 });
+
+//Check if user is authenticated
+function routeGuard(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/home');
+}
+
+//example appget
+//app.get('/some_path',checkAuthentication,function(req,res){
+    //do something only if user is authenticated
+//});
 
 //server lisetn
 
