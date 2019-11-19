@@ -98,6 +98,17 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+//Check if user is authenticated
+function routeGuard(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/home');
+}
+
+//example appget
+//app.get('/some_path',checkAuthentication,function(req,res){
+    //do something only if user is authenticated
+//});
+
 //server lisetn
 
 app.listen(port, () => {
