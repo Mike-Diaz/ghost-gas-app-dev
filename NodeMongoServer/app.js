@@ -31,25 +31,25 @@ app.use(cors(corsOptions))   // bringing in the CORS code to our app
 // notive they are "keyed", but HTTP request type, get, put, etc
 app
   .route("/fuelup")
-  .get(routeGuard, fuelUpController.getAll)
-  .post(routeGuard, fuelUpController.new);
+  .get(fuelUpController.getAll)
+  .post(fuelUpController.new);
 
 app
   .route("/fuelup/:fuelUpId")
-  .get(routeGuard, fuelUpController.getById)
-  .put(routeGuard, fuelUpController.update)
-  .delete(routeGuard, fuelUpController.delete);
+  .get(fuelUpController.getById)
+  .put(fuelUpController.update)
+  .delete(fuelUpController.delete);
 
 app
   .route("/vehicle")
-  .get(routeGuard, vehicleController.getAll)
-  .post(routeGuard, vehicleController.new);
+  .get(vehicleController.getAll)
+  .post(vehicleController.new);
 
 app
   .route("/vehicle/:vehicleId")
-  .get(routeGuard, vehicleController.getById)
-  .put(routeGuard, vehicleController.update)
-  .delete(routeGuard, vehicleController.delete);
+  .get(vehicleController.getById)
+  .put(vehicleController.update)
+  .delete(vehicleController.delete);
 
 app
   .route("/organization")
@@ -102,15 +102,30 @@ app.get('/', (req, res) => {
     });
   }
 });
+
+// alternate jwt method
+//   // If a user is found
+//   if(user){
+//     token = user.generateJwt();
+//     res.status(200);
+//     res.json({
+//       "token" : token
+//     });
+//   } else {
+//     // If user is not found
+//     res.status(401).json(info);
+//   }
+// }
+
 app.get('/auth/google', passport.authenticate('google', {
-  scope: ['email', 'profile']
+  scope: ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
 }));
 
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     req.session.token = req.user.token;
-    res.redirect('/');
+    res.redirect('/user/post/');
   }
 );
 
@@ -120,11 +135,13 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-//Check if user is authenticated
-function routeGuard(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  else {res.redirect('/');}
-}
+//strategy for authentication won't work without routing
+//as this is not implemented, the routeguard feature will
+//be implemented in the front end
+// function routeGuard(req, res, next) {
+//   if (req.isAuthenticated()) { return next(); }
+//   else {res.redirect('/');}
+// }
 
 //example appget
 //app.get('/some_path',checkAuthentication,function(req,res){

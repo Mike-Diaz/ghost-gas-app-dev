@@ -22,13 +22,21 @@ exports.getById = (req, res) => {
 };
 
 exports.new = (req, res) => {
-  let newUser = new User(req.body);
+  let newUser = new User({userId: req.body.GoogleId, email: req.body.email, name: req.body.name });
   console.log(newUser);
+  User.findById(req.params.userId, (err, user) => {
+    if (err) {
   newUser.save((err, user) => {
     if (err) {
       res.status(500).send(err);
     }
     res.status(201).json(user);
+  });
+    }
+    else {
+      next();
+    }
+    res.status(200).json(user);
   });
 };
 

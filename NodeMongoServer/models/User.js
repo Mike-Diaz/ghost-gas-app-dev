@@ -8,9 +8,6 @@ const UserSchema = new Schema({
         default: Date.now,
         required: true
     },
-    userId: {
-        type: String
-    },
     organizationId: { 
         type: String,
         required: true
@@ -18,43 +15,20 @@ const UserSchema = new Schema({
     role: {
         type: String 
     },
+//all information from google
+    userId: {
+        type: String
+    },
     name: {
         type: String
     },
-    displayName: {
-        type: String
-    },
-    birthday: {
-        type: String
-    },
-    relationship: {
-        type: String
-    },
-    isPerson: {
-        type: Boolean
-    },
-    isPlusUser: {
-        type: Boolean
-    },
-    placesLived: {
-        type: String
-    },
-    language: {
-        type: String
-    },
-    emails: {
-        type: String
-    },
-    gender: {
-        type: String
+    email: {
+        type: String,
+        required: true
     },
     picture: {
         type: String
     },
-    coverPhoto: {
-        type: String
-    }
-
 });
 
 module.exports = mongoose.model("User", UserSchema);
