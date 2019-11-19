@@ -1,6 +1,8 @@
 <app-vehicle-search-form [(selectedVehicle)]="selectedVehicle"></app-vehicle-search-form>
 
 <div *ngIf="selectedVehicle !== null">
+    <button mat-raised-button color="primary" (click)="refreshData()">Refresh Data</button>
+
     <h2>{{selectedVehicle.vehicleNum}} - {{selectedVehicle.make}} {{selectedVehicle.model}}</h2>
 
     <ul id="vehicle-info">
@@ -11,5 +13,8 @@
       <li><strong>VIN:</strong> {{selectedVehicle.vin}}</li>
     </ul>
 
-    <app-vehicle-metrics-table [selectedVehicle]="selectedVehicle"></app-vehicle-metrics-table>
+  <br>
+  <mat-divider></mat-divider>
+
+  <app-vehicle-metrics [selectedVehicle]="selectedVehicle"></app-vehicle-metrics>
 </div>

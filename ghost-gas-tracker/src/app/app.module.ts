@@ -22,7 +22,7 @@ import { VehicleViewComponent } from './components/vehicle-view/vehicle-view.com
 import { VehicleAddComponent } from  './components/vehicle-add/vehicle-add.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { VehicleSearchFormComponent } from './components/vehicle-search-form/vehicle-search-form.component';
-import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table/vehicle-metrics-table.component';
+import { VehicleMetricsComponent } from './components/vehicle-metrics/vehicle-metrics.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
@@ -40,7 +40,7 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
     VehicleAddComponent,
     FooterComponent,
     VehicleSearchFormComponent,
-    VehicleMetricsTableComponent,
+    VehicleMetricsComponent,
     HomeComponent,
     UserTableComponent,
     OrganizationTableComponent

@@ -1,7 +1,7 @@
 export class Vehicle {
   _id?: string;
-  createdOn?: Number = Date.now();
-  vehicleNum: Number;
+  createdOn?: number = Date.now();
+  vehicleNum: number;
   make: string;
   model: string;
   year: string;
