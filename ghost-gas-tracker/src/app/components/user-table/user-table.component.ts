@@ -62,6 +62,7 @@ export class UserTableComponent implements OnInit {
         this.userService.update(saveUser).subscribe((result) => {
           console.log('User updated!');
         });
+
       } else {
         // New
         // We must call subscribe() for new() to be executed

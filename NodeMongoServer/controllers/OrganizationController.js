@@ -8,7 +8,7 @@ exports.getAll = (req, res) => {
       res.status(500).send(err);
     }
     res.status(200).json(organization);
-    console.log(organization);
+    console.log(`Organization from Node: ${organization}`);
   });
 };
 

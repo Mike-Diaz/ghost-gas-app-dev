@@ -29,3 +29,4 @@ mongoose.connect(dbURI, options).then(
 require("../models/FuelUp");
 require("../models/Vehicle");
 require("../models/Organization");
+require("../models/User");

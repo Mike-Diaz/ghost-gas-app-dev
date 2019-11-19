@@ -8,7 +8,7 @@ exports.getAll = (req, res) => {
       res.status(500).send(err);
     }
     res.status(200).json(user);
-    console.log(user);
+    console.log(`User from Node: ${user}`);
   });
 };
 
