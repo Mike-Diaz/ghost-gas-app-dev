@@ -28,3 +28,5 @@ mongoose.connect(dbURI, options).then(
 // bring in our mongoose schema definitions
 require("../models/FuelUp");
 require("../models/Vehicle");
+require("../models/Organization");
+require("../models/User");

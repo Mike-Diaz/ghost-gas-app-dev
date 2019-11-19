@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fuelUpController = require("./controllers/FuelUpController");
 const vehicleController = require("./controllers/VehicleController");
+const organizationController = require("./controllers/OrganizationController");
+const userController = require("./controllers/UserController");
 const cors = require('cors')  // using this module to solve CORS problem
 // note the extra line in package.json to download this code
 
@@ -49,14 +51,34 @@ app
   .put(routeGuard, vehicleController.update)
   .delete(routeGuard, vehicleController.delete);
 
+app
+  .route("/organization")
+  .get(organizationController.getAll)
+  .post(organizationController.new);
 
+app
+  .route("/organization/:organizationId")
+  .get(organizationController.getById)
+  .put(organizationController.update)
+  .delete(organizationController.delete);
+
+app
+  .route("/user")
+  .get(userController.getAll)
+  .post(userController.new);
+
+app
+  .route("/user/:userId")
+  .get(userController.getById)
+  .put(userController.update)
+  .delete(userController.delete);
 
 //ouath implementation
 
 passport = require('passport'),
-auth = require('./config/auth'),
-cookieParser = require('cookie-parser'),
-cookieSession = require('cookie-session');
+  auth = require('./config/auth'),
+  cookieParser = require('cookie-parser'),
+  cookieSession = require('cookie-session');
 
 
 app.use(cookieSession({
@@ -69,27 +91,27 @@ auth(passport);
 app.use(passport.initialize());
 app.get('/', (req, res) => {
   if (req.session.token) {
-      res.cookie('token', req.session.token);
-      res.json({
-          status: 'session cookie set'
-      });
+    res.cookie('token', req.session.token);
+    res.json({
+      status: 'session cookie set'
+    });
   } else {
-      res.cookie('token', '')
-      res.json({
-          status: 'session cookie not set'
-      });
+    res.cookie('token', '')
+    res.json({
+      status: 'session cookie not set'
+    });
   }
 });
 app.get('/auth/google', passport.authenticate('google', {
-    scope: ['email', 'profile']
+  scope: ['email', 'profile']
 }));
 
 app.get('/auth/google/callback',
-    passport.authenticate('google', {failureRedirect:'/'}),
-    (req, res) => {
-        req.session.token = req.user.token;
-        res.redirect('/');
-    }
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    req.session.token = req.user.token;
+    res.redirect('/');
+  }
 );
 
 app.get('/logout', (req, res) => {
@@ -106,7 +128,7 @@ function routeGuard(req, res, next) {
 
 //example appget
 //app.get('/some_path',checkAuthentication,function(req,res){
-    //do something only if user is authenticated
+//do something only if user is authenticated
 //});
 
 //server lisetn
