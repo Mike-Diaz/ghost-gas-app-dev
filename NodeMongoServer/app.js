@@ -29,25 +29,25 @@ app.use(cors(corsOptions))   // bringing in the CORS code to our app
 // notive they are "keyed", but HTTP request type, get, put, etc
 app
   .route("/fuelup")
-  .get(fuelUpController.getAll)
-  .post(fuelUpController.new);
+  .get(routeGuard, fuelUpController.getAll)
+  .post(routeGuard, fuelUpController.new);
 
 app
   .route("/fuelup/:fuelUpId")
-  .get(fuelUpController.getById)
-  .put(fuelUpController.update)
-  .delete(fuelUpController.delete);
+  .get(routeGuard, fuelUpController.getById)
+  .put(routeGuard, fuelUpController.update)
+  .delete(routeGuard, fuelUpController.delete);
 
 app
   .route("/vehicle")
-  .get(vehicleController.getAll)
-  .post(vehicleController.new);
+  .get(routeGuard, vehicleController.getAll)
+  .post(routeGuard, vehicleController.new);
 
 app
   .route("/vehicle/:vehicleId")
-  .get(vehicleController.getById)
-  .put(vehicleController.update)
-  .delete(vehicleController.delete);
+  .get(routeGuard, vehicleController.getById)
+  .put(routeGuard, vehicleController.update)
+  .delete(routeGuard, vehicleController.delete);
 
 
 
@@ -101,7 +101,7 @@ app.get('/logout', (req, res) => {
 //Check if user is authenticated
 function routeGuard(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/home');
+  else {res.redirect('/');}
 }
 
 //example appget
