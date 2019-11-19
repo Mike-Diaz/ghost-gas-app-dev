@@ -17,9 +17,10 @@
 
     <mat-divider></mat-divider>
 
-    <app-organization-search-form #organizationSearchForm ngDefaultControl required name="organizationId"
+    <app-organization-search-form #organizationSearchForm ngDefaultControl matInput required name="organizationId"
         [(ngModel)]="selectedUser.organizationId">
     </app-organization-search-form>
+    <p>Organization ID: {{selectedUser.organizationId}}</p>
 
     <mat-divider></mat-divider>
 

@@ -52,7 +52,7 @@ export class UserTableComponent implements OnInit {
         isPlusUser: this.form.value.isPlusUser,
         picture: this.form.value.picture,
         coverPhoto: this.form.value.coverPhoto,
-        placesLived: this.form.value.placesLives,
+        placesLived: this.form.value.placesLived,
       };
 
       if (this.selectedUser._id) {
