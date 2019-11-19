@@ -30,6 +30,7 @@ import { OrganizationTableComponent } from './components/organization-table/orga
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
+import { OrganizationSearchFormComponent } from './components/organization-search-form/organization-search-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
     VehicleMetricsComponent,
     HomeComponent,
     UserTableComponent,
-    OrganizationTableComponent
+    OrganizationTableComponent,
+    OrganizationSearchFormComponent
   ],
   imports: [
     BrowserModule,
