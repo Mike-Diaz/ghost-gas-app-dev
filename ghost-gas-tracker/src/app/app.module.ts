@@ -73,9 +73,9 @@ import { UserSearchFormComponent } from './components/user-search-form/user-sear
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    HttpClient,
-    ToastrService,
-    Subject
+    // HttpClient,
+    // ToastrService,
+    // Subject
   ],
   providers: [],
   bootstrap: [AppComponent]
