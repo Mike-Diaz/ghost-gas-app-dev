@@ -14,6 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClient } from '@angular/common/http';
+import {ToastrService} from 'ngx-toastr';
+import {Subject} from 'rxjs';
+
 
 // Components
 import { HeaderComponent } from './layout/header/header.component';
@@ -68,7 +72,10 @@ import { UserSearchFormComponent } from './components/user-search-form/user-sear
     MatGridListModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClient,
+    ToastrService,
+    Subject
   ],
   providers: [],
   bootstrap: [AppComponent]
