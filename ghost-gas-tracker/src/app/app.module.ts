@@ -14,6 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { HttpClient } from '@angular/common/http';
+import {ToastrService} from 'ngx-toastr';
+import {Subject} from 'rxjs';
+
 
 // Components
 import { HeaderComponent } from './layout/header/header.component';
@@ -22,13 +26,16 @@ import { VehicleViewComponent } from './components/vehicle-view/vehicle-view.com
 import { VehicleAddComponent } from  './components/vehicle-add/vehicle-add.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { VehicleSearchFormComponent } from './components/vehicle-search-form/vehicle-search-form.component';
-import { VehicleMetricsTableComponent } from './components/vehicle-metrics-table/vehicle-metrics-table.component';
+import { VehicleMetricsComponent } from './components/vehicle-metrics/vehicle-metrics.component';
 import {HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { OrganizationTableComponent } from './components/organization-table/organization-table.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
+import { OrganizationSearchFormComponent } from './components/organization-search-form/organization-search-form.component';
+import { UserSearchFormComponent } from './components/user-search-form/user-search-form.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +46,12 @@ import {MatNativeDateModule} from "@angular/material/core";
     VehicleAddComponent,
     FooterComponent,
     VehicleSearchFormComponent,
-    VehicleMetricsTableComponent,
+    VehicleMetricsComponent,
     HomeComponent,
     UserTableComponent,
-    OrganizationTableComponent
+    OrganizationTableComponent,
+    OrganizationSearchFormComponent,
+    UserSearchFormComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,11 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatExpansionModule,
     MatGridListModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCheckboxModule,
+    // HttpClient,
+    // ToastrService,
+    // Subject
   ],
   providers: [],
   bootstrap: [AppComponent]

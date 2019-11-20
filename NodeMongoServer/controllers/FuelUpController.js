@@ -2,7 +2,7 @@ const FuelUp = require("../models/FuelUp");
 const mongoose = require("mongoose");
 
 exports.getAll = (req, res) => {
-  FuelUp.find({}, (err, fuelUp) => {
+  FuelUp.find({}).sort({fuelUpDate: 'asc'}).exec((err, fuelUp) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -42,7 +42,7 @@ exports.update = (req, res) => {
       if (err) {
         res.status(500).send(err);
       }
-      console.log(fuelUp);
+      console.log(`FuelUp from Node: ${fuelUp}`);
       res.status(200).json(fuelUp);
     }
   );

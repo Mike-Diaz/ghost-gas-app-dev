@@ -41,6 +41,6 @@ export class VehicleService {
 
   public delete(vehicle: Vehicle): Observable<Vehicle> {
     return this.httpClient
-      .put<Vehicle>(API_URL + '/vehicle/' + vehicle._id, httpOptions);
+      .delete<Vehicle>(API_URL + '/vehicle/' + vehicle._id, httpOptions);
   }
 }

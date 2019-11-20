@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fuelUpController = require("./controllers/FuelUpController");
 const vehicleController = require("./controllers/VehicleController");
+const organizationController = require("./controllers/OrganizationController");
+const userController = require("./controllers/UserController");
 const cors = require('cors')  // using this module to solve CORS problem
 // note the extra line in package.json to download this code
 
@@ -20,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.use(cors(corsOptions))   // bringing in the CORS code to our app
+app.use(cors({corsOptions, credentials: true}))   // bringing in the CORS code to our app
 
 // API ENDPOINTS
 // not using the Express Router code, instead just listing them
@@ -49,14 +51,34 @@ app
   .put(vehicleController.update)
   .delete(vehicleController.delete);
 
+app
+  .route("/organization")
+  .get(organizationController.getAll)
+  .post(organizationController.new);
 
+app
+  .route("/organization/:organizationId")
+  .get(organizationController.getById)
+  .put(organizationController.update)
+  .delete(organizationController.delete);
+
+app
+  .route("/user")
+  .get(userController.getAll)
+  .post(userController.new);
+
+app
+  .route("/user/:userId")
+  .get(userController.getById)
+  .put(userController.update)
+  .delete(userController.delete);
 
 //ouath implementation
 
 passport = require('passport'),
-auth = require('./config/auth'),
-cookieParser = require('cookie-parser'),
-cookieSession = require('cookie-session');
+  auth = require('./config/auth'),
+  cookieParser = require('cookie-parser'),
+  cookieSession = require('cookie-session');
 
 
 app.use(cookieSession({
@@ -69,27 +91,42 @@ auth(passport);
 app.use(passport.initialize());
 app.get('/', (req, res) => {
   if (req.session.token) {
-      res.cookie('token', req.session.token);
-      res.json({
-          status: 'session cookie set'
-      });
+    res.cookie('token', req.session.token);
+    res.json({
+      status: 'session cookie set'
+    });
   } else {
-      res.cookie('token', '')
-      res.json({
-          status: 'session cookie not set'
-      });
+    res.cookie('token', '')
+    res.json({
+      status: 'session cookie not set'
+    });
   }
 });
+
+// alternate jwt method
+//   // If a user is found
+//   if(user){
+//     token = user.generateJwt();
+//     res.status(200);
+//     res.json({
+//       "token" : token
+//     });
+//   } else {
+//     // If user is not found
+//     res.status(401).json(info);
+//   }
+// }
+
 app.get('/auth/google', passport.authenticate('google', {
-    scope: ['https://www.googleapis.com/auth/userinfo.profile']
+  scope: ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']
 }));
 
 app.get('/auth/google/callback',
-    passport.authenticate('google', {failureRedirect:'/'}),
-    (req, res) => {
-        req.session.token = req.user.token;
-        res.redirect('/');
-    }
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    req.session.token = req.user.token;
+    res.redirect('/user/post/');
+  }
 );
 
 app.get('/logout', (req, res) => {
@@ -97,6 +134,19 @@ app.get('/logout', (req, res) => {
   req.session = null;
   res.redirect('/');
 });
+
+//strategy for authentication won't work without routing
+//as this is not implemented, the routeguard feature will
+//be implemented in the front end
+// function routeGuard(req, res, next) {
+//   if (req.isAuthenticated()) { return next(); }
+//   else {res.redirect('/');}
+// }
+
+//example appget
+//app.get('/some_path',checkAuthentication,function(req,res){
+//do something only if user is authenticated
+//});
 
 //server lisetn
 

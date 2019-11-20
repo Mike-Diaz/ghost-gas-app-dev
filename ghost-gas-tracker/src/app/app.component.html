@@ -25,6 +25,22 @@
       <app-vehicle-add></app-vehicle-add>
     </mat-expansion-panel>
 
+    <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-icon>apartment-24px</mat-icon>
+        <mat-panel-title>Organization Add/Edit</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-organization-table></app-organization-table>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-icon>face-24px</mat-icon>
+        <mat-panel-title>User Add/Edit</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-user-table></app-user-table>
+    </mat-expansion-panel>
+
   </mat-accordion>
 </mat-grid-list>
 

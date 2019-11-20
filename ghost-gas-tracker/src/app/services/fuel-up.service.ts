@@ -41,6 +41,6 @@ export class FuelUpService {
 
   public delete(fuelUp: FuelUp): Observable<FuelUp> {
     return this.httpClient
-      .put<FuelUp>(API_URL + '/fuelup/' + fuelUp._id, httpOptions);
+      .delete<FuelUp>(API_URL + '/fuelup/' + fuelUp._id, httpOptions);
   }
 }
