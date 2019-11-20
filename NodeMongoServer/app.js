@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.use(cors(corsOptions))   // bringing in the CORS code to our app
+app.use(cors({corsOptions, credentials: true}))   // bringing in the CORS code to our app
 
 // API ENDPOINTS
 // not using the Express Router code, instead just listing them
