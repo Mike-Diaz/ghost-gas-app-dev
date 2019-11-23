@@ -2,15 +2,37 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrganizationSearchFormComponent } from './organization-search-form.component';
 
-describe('OrganizationSearchFormComponent', () => {
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from "@angular/common/http";
+import { MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+fdescribe('OrganizationSearchFormComponent', () => {
   let component: OrganizationSearchFormComponent;
   let fixture: ComponentFixture<OrganizationSearchFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrganizationSearchFormComponent ]
+      declarations: [
+        OrganizationSearchFormComponent
+      ],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatIconModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        MatInputModule,
+        BrowserAnimationsModule
+      ],
+      providers: []
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
