@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-fdescribe('OrganizationSearchFormComponent', () => {
+describe('OrganizationSearchFormComponent', () => {
   let component: OrganizationSearchFormComponent;
   let fixture: ComponentFixture<OrganizationSearchFormComponent>;
 
