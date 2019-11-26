@@ -14,9 +14,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
-//import { HttpClient } from '@angular/common/http';
-//import { ToastrService } from 'ngx-toastr';
-//import { Subject } from 'rxjs';
 import { HeaderComponent } from './layout/header/header.component';
 import { VehicleFuelUpComponent } from './components/vehicle-fuel-up/vehicle-fuel-up.component';
 import { VehicleViewComponent } from './components/vehicle-view/vehicle-view.component';
@@ -33,6 +30,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckbox, MatCheckboxModule } from "@angular/material/checkbox";
 import { OrganizationSearchFormComponent } from './components/organization-search-form/organization-search-form.component';
 import { UserSearchFormComponent } from './components/user-search-form/user-search-form.component';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -70,9 +68,7 @@ import { UserSearchFormComponent } from './components/user-search-form/user-sear
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    // HttpClient,
-    // ToastrService,
-    // Subject
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
