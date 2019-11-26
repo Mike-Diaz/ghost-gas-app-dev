@@ -38,6 +38,7 @@ import { UserSearchFormComponent } from './components/user-search-form/user-sear
 import { Injectable } from '@angular/core';
 // import { NgModule } from '@angular/core';
 import { DataService } from '../app/services/data.service';
+import {APP_BASE_HREF} from "@angular/common";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -80,6 +81,7 @@ describe('AppComponent', () => {
         UserSearchFormComponent
       ],
       providers: [
+        {provide: APP_BASE_HREF, useValue: '/'},
         DataService,
         Injectable,
         NgModule
