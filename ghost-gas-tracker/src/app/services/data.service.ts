@@ -10,7 +10,13 @@ const API_URL = environment.apiUrl;
   providedIn: 'root'
 })
 export class DataService {
-
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService
+  ) {
+    this.loggedIn = new Subject();
+    this.getLogin();
+  }
 
   loggedIn: Subject<boolean>;
 
@@ -46,14 +52,6 @@ export class DataService {
     }).subscribe(() => {
       this.loggedIn.next(false);
     });
-  }
-
-  constructor(
-    private http: HttpClient,
-    private toastr: ToastrService
-  ) {
-    this.loggedIn = new Subject();
-    this.getLogin();
   }
 
 }
