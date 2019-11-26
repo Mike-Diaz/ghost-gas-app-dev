@@ -1,4 +1,5 @@
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
+const user = require('../models/User');
 module.exports = (passport) => {
 
     passport.serializeUser((user, done) => {
@@ -14,8 +15,17 @@ module.exports = (passport) => {
             passReqToCallback: true
         }, 
         (token, refreshToken, profile, done) => {
+            console.log('Getting User Information')
+            console.log(profile);
+            new user({
+                userID:profile.id,
+                name:profile.givenName + ' ' + profile.familyName,
+                email:profile.emails[0].value,
+                picture:profile.photos[0].value
+            }).save().then((newUser) => {
+                console.log('new user created: ' + newUser );
+            })
             return done(null, {
-                profile: profile,
                 token: token
             });
         }));
