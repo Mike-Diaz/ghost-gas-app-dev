@@ -10,6 +10,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DataService } from '../../services/data.service';
+
 describe('VehicleSearchFormComponent', () => {
   let component: VehicleSearchFormComponent;
   let fixture: ComponentFixture<VehicleSearchFormComponent>;
@@ -26,6 +28,9 @@ describe('VehicleSearchFormComponent', () => {
         HttpClientModule,
         MatInputModule,
         BrowserAnimationsModule
+      ],
+      providers: [
+        DataService
       ]
     })
     .compileComponents();

@@ -10,6 +10,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { DataService } from '../../services/data.service';
+
 describe('UserSearchFormComponent', () => {
   let component: UserSearchFormComponent;
   let fixture: ComponentFixture<UserSearchFormComponent>;
@@ -27,7 +29,9 @@ describe('UserSearchFormComponent', () => {
         MatInputModule,
         BrowserAnimationsModule
       ],
-      providers: []
+      providers: [
+        DataService
+      ]
     })
     .compileComponents();
   }));
