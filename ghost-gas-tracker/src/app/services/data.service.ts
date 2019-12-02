@@ -1,23 +1,28 @@
 import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
 import {Subject} from 'rxjs';
 
+const API_URL = environment.apiUrl;
 
-const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000/'
-};
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
-
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService
+  ) {
+    this.loggedIn = new Subject();
+    this.getLogin();
+  }
 
   loggedIn: Subject<boolean>;
 
-  //login feature for sign in 
+  //login feature for sign in
   // doLogin(email: string, password: string) {
-  //   this.http.post(environment.apiUrl + '/login', {
+  //   this.http.post(API_URL + '/login', {
   //     email: email,
   //     password: password
   //   }, {
@@ -32,7 +37,7 @@ export class DataService {
   // }
 
   getLogin() {
-    this.http.get(environment.apiUrl + '/', {
+    this.http.get(API_URL + '/', {
       withCredentials: true // <=========== important!
     }).subscribe((resp: any) => {
       this.loggedIn.next(resp.loggedIn);
@@ -42,19 +47,11 @@ export class DataService {
   }
 
   logout() {
-    this.http.post(environment.apiUrl + '/logout', {}, {
+    this.http.post(API_URL + '/logout', {}, {
       withCredentials: true
     }).subscribe(() => {
       this.loggedIn.next(false);
     });
-  }
-
-  constructor(
-    private http: HttpClient,
-    private toastr: ToastrService
-  ) {
-    this.loggedIn = new Subject();
-    this.getLogin();
   }
 
 }

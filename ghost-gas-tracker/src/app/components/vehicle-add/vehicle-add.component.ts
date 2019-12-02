@@ -12,6 +12,7 @@ export class VehicleAddComponent implements OnInit {
   @ViewChild('vehicleSearchForm', {static: false}) vehicleSearchForm;
   @ViewChild('form', {static: false}) form: NgForm;
   selectedVehicle: Vehicle = {} as Vehicle;
+  lastSavedId: string = null; // store last added/updated for testing
 
   constructor(
     private vehicleService: VehicleService
@@ -45,13 +46,15 @@ export class VehicleAddComponent implements OnInit {
         saveVehicle._id = this.selectedVehicle._id;
 
         this.vehicleService.update(saveVehicle).subscribe((result) => {
-          console.log('Vehicle updated!');
+          this.lastSavedId = result._id;
+          console.log('Vehicle updated! Id: ' + this.lastSavedId);
         });
       } else {
         // New
         // We must call subscribe() for new() to be executed
         this.vehicleService.new(saveVehicle).subscribe((result) => {
-          console.log('Vehicle created!');
+          this.lastSavedId = result._id;
+          console.log('Vehicle created! Id: ' + this.lastSavedId);
         });
       }
 
