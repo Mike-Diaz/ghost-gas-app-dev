@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         type: String 
     },
 //all information from google
-    userId: {
+    userId: { // the userId from google account
         type: String
     },
     name: {
@@ -31,4 +31,6 @@ const UserSchema = new Schema({
     },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+// Make variable from mongoose.model() to export for auto-completion support in IDE
+var User = mongoose.model("User", UserSchema);
+module.exports = User;

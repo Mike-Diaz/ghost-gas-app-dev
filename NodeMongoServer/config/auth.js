@@ -16,15 +16,30 @@ module.exports = (passport) => {
         },
         (request, accessToken, refreshToken, profile, done) => {
             console.log('Getting User Information');
-            new User({
+
+            const userData = new User({
                 organizationId: '1', // example organizationId since it's required in the schema?
-                userId:profile.id,
-                name:profile.name.givenName + ' ' + profile.name.familyName,
-                email:profile.emails[0].value,
-                picture:profile.photos[0].value
-            }).save((err, newUser) => {
-                console.log('new user created: ' + newUser );
+                userId: profile.id,
+                name: profile.name.givenName + ' ' + profile.name.familyName,
+                email: profile.emails[0].value,
+                picture: profile.photos[0].value
             });
+
+            User.find(
+                {userId: userData.userId}, // find if a user with profile.id already exists
+                (err, userDoc) => {
+                    if (userDoc.length) {
+                        // Exists already
+                        console.log('User already exists: ', userDoc);
+                    } else {
+                        // Doesn't exist, create new user
+                        userData.save((err, newUser) => {
+                            console.log('New user created: ' + newUser);
+                        });
+                    }
+                }
+            );
+
             return done(null, {
                 token: accessToken
             });
