@@ -10,11 +10,6 @@
 
 <form class="user-add-container" #form="ngForm" (ngSubmit)="onSubmit()">
 
-    <mat-form-field>
-        <input type="number" name="userId" ngModel required matInput placeholder="User ID"
-            [(ngModel)]="selectedUser.userId">
-    </mat-form-field>
-
     <mat-divider></mat-divider>
 
     <app-organization-search-form #organizationSearchForm ngDefaultControl matInput required name="organizationId"
@@ -26,12 +21,6 @@
 
     <mat-form-field>
         <input name="role" ngModel required matInput placeholder="Role" [(ngModel)]="selectedUser.role">
-    </mat-form-field>
-
-    <mat-divider></mat-divider>
-
-    <mat-form-field>
-        <input name="userId" ngModel required matInput placeholder="User ID" [(ngModel)]="selectedUser.userId">
     </mat-form-field>
 
     <mat-divider></mat-divider>

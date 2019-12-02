@@ -19,14 +19,14 @@ module.exports = (passport) => {
 
             const userData = new User({
                 organizationId: '1', // example organizationId since it's required in the schema?
-                userId: profile.id,
+                googleId: profile.id,
                 name: profile.name.givenName + ' ' + profile.name.familyName,
                 email: profile.emails[0].value,
                 picture: profile.photos[0].value
             });
 
             User.find(
-                {userId: userData.userId}, // find if a user with profile.id already exists
+                {googleId: userData.googleId}, // find if a user with profile.id already exists
                 (err, userDoc) => {
                     if (userDoc.length) {
                         // Exists already

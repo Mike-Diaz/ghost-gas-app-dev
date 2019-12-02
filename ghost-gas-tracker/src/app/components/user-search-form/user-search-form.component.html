@@ -8,7 +8,7 @@
       <mat-autocomplete #autoSearch="matAutocomplete" (optionSelected)="selectUser($event)"
                         [displayWith]="searchDisplay">
         <mat-option *ngFor="let option of filteredSearchOptions | async" [value]="option">
-          {{option.userId}} - {{option.name}}
+          {{option._id}} - {{option.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
