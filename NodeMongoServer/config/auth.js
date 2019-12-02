@@ -25,23 +25,26 @@ module.exports = (passport) => {
                 picture: profile.photos[0].value
             });
 
-            User.find(
-                {googleId: userData.googleId}, // find if a user with profile.id already exists
-                (err, userDoc) => {
+            let userId = '';
+            User.find({googleId: userData.googleId}).exec().then(
+                (userDoc) => {
                     if (userDoc.length) {
                         // Exists already
                         console.log('User already exists: ', userDoc);
+                        userId = userDoc._id;
                     } else {
                         // Doesn't exist, create new user
-                        userData.save((err, newUser) => {
+                        userData.save().exec().then((newUser) => {
                             console.log('New user created: ' + newUser);
+                            userId = newUser._id;
                         });
                     }
                 }
             );
 
             return done(null, {
-                token: accessToken
+                token: accessToken,
+                userId: userId
             });
         }));
 };

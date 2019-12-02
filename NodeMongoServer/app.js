@@ -90,13 +90,13 @@ app.use(cookieParser());
 auth(passport);
 app.use(passport.initialize());
 app.get('/', (req, res) => {
-  if (req.session.token) {
-    res.cookie('token', req.session.token);
+  if (req.session.token && req.session.userId) {
+    res.cookie('auth', JSON.stringify(req.session));
     res.json({
       status: 'session cookie set'
     });
   } else {
-    res.cookie('token', '')
+    res.cookie('auth', { token: '', userId: '' });
     res.json({
       status: 'session cookie not set'
     });
