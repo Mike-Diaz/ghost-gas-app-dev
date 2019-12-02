@@ -14,7 +14,7 @@ module.exports = (passport) => {
             callbackURL: 'http://localhost:3000/auth/google/callback',
             passReqToCallback: true
         },
-        (request, accessToken, refreshToken, profile, done) => {
+        async (request, accessToken, refreshToken, profile, done) => {
             console.log('Getting User Information');
 
             const userData = new User({
@@ -26,21 +26,18 @@ module.exports = (passport) => {
             });
 
             let userId = '';
-            User.find({googleId: userData.googleId}).exec().then(
-                (userDoc) => {
-                    if (userDoc.length) {
-                        // Exists already
-                        console.log('User already exists: ', userDoc);
-                        userId = userDoc._id;
-                    } else {
-                        // Doesn't exist, create new user
-                        userData.save().exec().then((newUser) => {
-                            console.log('New user created: ' + newUser);
-                            userId = newUser._id;
-                        });
-                    }
-                }
-            );
+            const userDoc = await User.find({googleId: userData.googleId}).exec();
+
+            if (userDoc.length) {
+                // Exists already
+                console.log('User already exists: ', userDoc[0]);
+                userId = userDoc[0]._id;
+            } else {
+                // Doesn't exist, create new user
+                const newUser = await userData.save();
+                console.log('New user created: ' + newUser);
+                userId = newUser._id;
+            }
 
             return done(null, {
                 token: accessToken,

@@ -91,12 +91,12 @@ auth(passport);
 app.use(passport.initialize());
 app.get('/', (req, res) => {
   if (req.session.token && req.session.userId) {
-    res.cookie('auth', JSON.stringify(req.session));
+    res.cookie('auth', req.session, { encode: String });
     res.json({
       status: 'session cookie set'
     });
   } else {
-    res.cookie('auth', { token: '', userId: '' });
+    res.cookie('auth', { token: '', userId: '' }, { encode: String });
     res.json({
       status: 'session cookie not set'
     });
@@ -124,7 +124,7 @@ app.get('/auth/google', passport.authenticate('google', {
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    req.session.token = req.user.token;
+    req.session = req.user;
     res.redirect('/');
   }
 );
