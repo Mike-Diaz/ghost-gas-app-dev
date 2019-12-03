@@ -9,6 +9,7 @@ export class AppComponent implements OnInit {
   title = 'ghost-gas-tracker';
   show: boolean = false;
   step = 0;
+  loggedIn = false;
 
   loginFunc(){
     this.show = true;
@@ -29,8 +30,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     
   }
-
-  loggedIn = false;
 
   receiveLoggedIn($event) {
     this.loggedIn = $event;
