@@ -1,16 +1,12 @@
-<div *ngIf="!show">
-  <h2>Login with Google</h2>
-
-
+    <app-header></app-header>
+  </mat-grid-tile-header>
+  <mat-divider></mat-divider>
+  <app-home></app-home>
+  <mat-divider></mat-divider>
   <button onclick="loginFunc()">Log In</button>
-  <!-- <a href="/auth/google">Sign In</a>
-  <a href="/logout">Sign out</a>
-   -->
-
+<div *ngIf="!show">
 </div>
-
 <mat-grid-list cols="1" rowHeight="fit" *ngIf="show">
-  <mat-grid-tile-header><app-header></app-header></mat-grid-tile-header>
   <mat-accordion class="user-dashboard">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>

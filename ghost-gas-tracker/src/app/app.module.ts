@@ -28,6 +28,7 @@ import { OrganizationTableComponent } from './components/organization-table/orga
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckbox, MatCheckboxModule } from "@angular/material/checkbox";
+import { MatCardModule } from '@angular/material/card';
 import { OrganizationSearchFormComponent } from './components/organization-search-form/organization-search-form.component';
 import { UserSearchFormComponent } from './components/user-search-form/user-search-form.component';
 import {ToastrModule} from "ngx-toastr";
@@ -69,6 +70,7 @@ import { APP_BASE_HREF } from '@angular/common';
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
+    MatCardModule,
     ToastrModule.forRoot()
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}],
