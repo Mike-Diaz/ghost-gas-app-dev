@@ -5,15 +5,6 @@ export class User {
     role: string;
     userId: number;
     name: string;
-    displayName: string;
-    birthday: string;
-    relationship: string;
-    isPerson: boolean;
-    isPlusUser: boolean;
-    placesLived: string;
-    language: string;
     emails: string;
-    gender: string;
     picture: string;
-    coverPhoto: string;
 }
