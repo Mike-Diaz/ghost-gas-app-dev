@@ -103,30 +103,31 @@ app.get('/', (req, res) => {
   }
 });
 
-// alternate jwt method
-//   // If a user is found
-//   if(user){
-//     token = user.generateJwt();
-//     res.status(200);
-//     res.json({
-//       "token" : token
-//     });
-//   } else {
-//     // If user is not found
-//     res.status(401).json(info);
-//   }
-// }
 
 app.get('/auth/google', passport.authenticate('google', {
   scope: ['email', 'profile']
 }));
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
+  passport.authenticate('google', { session: false }, { failureRedirect: '/' }),
   (req, res) => {
-    req.session = req.user;
-    res.redirect('/');
+
+let user = req.user;
+
+  // If a user is found
+  if(user){
+    token = user.generateJwt();
+    res.status(200);
+    res.json({
+      "token" : token
+    });
+  } else {
+    // If user is not found
+    res.status(401).json(info);
   }
+  res.redirect('/');
+  }
+
 );
 
 app.get('/logout', (req, res) => {

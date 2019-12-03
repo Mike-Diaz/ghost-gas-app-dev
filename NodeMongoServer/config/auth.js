@@ -39,7 +39,7 @@ module.exports = (passport) => {
                 userId = newUser._id;
             }
 
-            return done(null, {
+            return done(null, user, {
                 token: accessToken,
                 userId: userId
             });
