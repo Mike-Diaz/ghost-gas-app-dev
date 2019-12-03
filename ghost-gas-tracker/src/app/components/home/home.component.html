@@ -4,6 +4,14 @@
     <a href="/auth/google">Sign In</a>
     <mat-divider></mat-divider>
     <a href="/logout">Sign out</a> -->
-    <button mat-button  (click)="sendLogin()" class="button">Log In</button>
-    <a href="/auth/google">Sign In</a>
+    <!-- <button mat-button (click)="sendLogin()" class="button">Log In</button> -->
+    <button mat-button (click)="singIn('Google');">Sign in with Google</button>
+    <button mat-button (click)="signOut();">Sign out</button>
+
+    <div *ngIf="user"> 
+        <img src="{{ user.photoUrl }}">
+        <h4>{{ user.name }}</h4>
+        <p>{{ user.email }}</p>
+    </div>
+
 </mat-card>
