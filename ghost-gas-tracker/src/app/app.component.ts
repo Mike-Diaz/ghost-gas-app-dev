@@ -29,4 +29,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     
   }
+
+  loggedIn = false;
+
+  receiveLoggedIn($event) {
+    this.loggedIn = $event;
+  }
 }
