@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
         this.user = response;
         this.loggedIn = true;
         this.loggedInEvent.emit(this.loggedIn);
+        this.userEvent.emit(this.user);
       }
     );
     
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.user = null;
     this.loggedIn = false;
     this.loggedInEvent.emit(this.loggedIn);
+    this.userEvent.emit(this.user);
     console.log('User signed out.');
   }
 
@@ -45,8 +47,5 @@ export class HomeComponent implements OnInit {
   }
 
   @Output() loggedInEvent = new EventEmitter<boolean>();
-
-  sendLogin() {
-      this.loggedInEvent.emit(this.loggedIn);
-  }
+  @Output() userEvent = new EventEmitter<any>();
 }
