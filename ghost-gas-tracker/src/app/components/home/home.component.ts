@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AuthService, GoogleLoginProvider } from 'angular4-social-login';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,34 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
-  constructor() { }
+  title = 'Sign in';
+  user: any;
+  loggedIn: boolean = false;
+
+  constructor(private _socioAuthServ: AuthService) { }
+
+  singIn(platform : string): void {
+    platform = GoogleLoginProvider.PROVIDER_ID;
+    this._socioAuthServ.signIn(platform).then(
+      (response) => {
+        console.log(platform + " logged in user data is= " , response);
+        this.user = response;
+        this.loggedIn = true;
+        this.loggedInEvent.emit(this.loggedIn);
+        this.userEvent.emit(this.user);
+      }
+    );
+    
+  }
+
+  signOut(): void {
+    this._socioAuthServ.signOut();
+    this.user = null;
+    this.loggedIn = false;
+    this.loggedInEvent.emit(this.loggedIn);
+    this.userEvent.emit(this.user);
+    console.log('User signed out.');
+  }
 
   ngOnInit() {
     function onSignIn(googleUser) {
@@ -19,11 +46,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  loggedIn: boolean = true;
-
   @Output() loggedInEvent = new EventEmitter<boolean>();
-
-  sendLogin() {
-      this.loggedInEvent.emit(this.loggedIn);
-  }
+  @Output() userEvent = new EventEmitter<any>();
 }
