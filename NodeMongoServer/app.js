@@ -109,8 +109,8 @@ app.get('/auth/google', passport.authenticate('google', {
 }));
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { session: false }, { failureRedirect: '/' }),
-  (req, res) => {
+    passport.authenticate('google', { session: false }),
+      (req, res) => {
 
 let user = req.user;
 console.log(user);
