@@ -77,30 +77,30 @@ app
 
 passport = require('passport'),
   auth = require('./config/auth'),
-  cookieParser = require('cookie-parser'),
-  cookieSession = require('cookie-session');
+//   cookieParser = require('cookie-parser'),
+//   cookieSession = require('cookie-session');
 
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['123']
-}));
-app.use(cookieParser());
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['123']
+// }));
+// app.use(cookieParser());
 
 auth(passport);
 app.use(passport.initialize());
 app.get('/', (req, res) => {
-  if (req.session.token && req.session.userId) {
-    res.cookie('auth', req.session, { encode: String });
-    res.json({
-      status: 'session cookie set'
-    });
-  } else {
-    res.cookie('auth', { token: '', userId: '' }, { encode: String });
-    res.json({
-      status: 'session cookie not set'
-    });
-  }
+  // if (req.session.token && req.session.userId) {
+  //   res.cookie('auth', req.session, { encode: String });
+  //   res.json({
+  //     status: 'session cookie set'
+  //   });
+  // } else {
+  //   res.cookie('auth', { token: '', userId: '' }, { encode: String });
+  //   res.json({
+  //     status: 'session cookie not set'
+  //   });
+  // }
 });
 
 
@@ -113,7 +113,7 @@ app.get('/auth/google/callback',
   (req, res) => {
 
 let user = req.user;
-
+console.log(user);
   // If a user is found
   if(user){
     token = user.generateJwt();
@@ -121,6 +121,8 @@ let user = req.user;
     res.json({
       "token" : token
     });
+    console.log(token);
+    res.send(token);
   } else {
     // If user is not found
     res.status(401).json(info);
@@ -132,7 +134,7 @@ let user = req.user;
 
 app.get('/logout', (req, res) => {
   req.logout();
-  req.session = null;
+  req.token = null;
   res.redirect('/');
 });
 
