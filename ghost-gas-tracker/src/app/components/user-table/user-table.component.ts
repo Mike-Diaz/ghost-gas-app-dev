@@ -38,7 +38,6 @@ export class UserTableComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const saveUser: User = {
-        userId: this.form.value.userId,
         organizationId: this.form.value.organizationId,
         role: this.form.value.role,
         name: this.form.value.name,

@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         type: String 
     },
 //all information from google
-    userId: { // the userId from google account
+    googleId: { // the userId from google account
         type: String
     },
     name: {

@@ -3,7 +3,7 @@ export class User {
     createdOn?: number = Date.now();
     organizationId: number;
     role: string;
-    userId: number;
+    googleId?: number;
     name: string;
     emails: string;
     picture: string;
