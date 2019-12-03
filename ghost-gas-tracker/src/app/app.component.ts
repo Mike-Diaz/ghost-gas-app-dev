@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'ghost-gas-tracker';
-
+  show: boolean = false;
   step = 0;
+
+  loginFunc(){
+    this.show = true;
+  }
 
   setStep(index: number) {
     this.step = index;
