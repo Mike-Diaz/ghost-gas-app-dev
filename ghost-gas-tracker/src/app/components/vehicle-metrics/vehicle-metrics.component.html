@@ -23,6 +23,16 @@
       <td mat-cell *matCellDef="let entry"> {{entry.fuelUpDate}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="mileStart">
+      <th mat-header-cell *matHeaderCellDef> Miles Start</th>
+      <td mat-cell *matCellDef="let entry"> {{entry.mileStart}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mileEnd">
+      <th mat-header-cell *matHeaderCellDef> Miles End</th>
+      <td mat-cell *matCellDef="let entry"> {{entry.mileEnd}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="miles">
       <th mat-header-cell *matHeaderCellDef> Miles</th>
       <td mat-cell *matCellDef="let entry"> {{entry.miles}} </td>
@@ -35,7 +45,7 @@
 
     <ng-container matColumnDef="calc_mpg">
       <th mat-header-cell *matHeaderCellDef> MPG</th>
-      <td mat-cell *matCellDef="let entry"> {{entry.miles / entry.gallons}} </td>
+      <td mat-cell *matCellDef="let entry"> {{(entry.miles / entry.gallons | number: '1.1-2')}} </td>
     </ng-container>
 
     <ng-container matColumnDef="totalCost">
@@ -54,9 +64,9 @@
   <div id="vehicle-metrics-totals">
     <h3>Totals</h3>
     <ul>
-      <li><strong>Mileage:</strong> {{getTotalFuelUpMileage()}}</li>
-      <li><strong>Average MPG:</strong> {{getAverageFuelUpMpg()}}</li>
-      <li><strong>Total cost:</strong> {{getTotalFuelUpCost()}}</li>
+      <li><strong>Total Mileage:</strong> {{ getTotalFuelUpMileage() }}</li>
+      <li><strong>Average MPG:</strong> {{ getAverageFuelUpMpg() | number: '1.1-2'}}</li>
+      <li><strong>Total Expended:</strong> ${{ getTotalFuelUpCpst() }} </li>
     </ul>
   </div>
 </div>

@@ -22,6 +22,14 @@ const FuelUpSchema = new Schema({
     },
     miles: {
         type: Number,
+        required: false,
+    },
+    mileStart: {
+        type: Number,
+        required: false,
+    },
+    mileEnd: {
+        type: Number,
         required: true,
     },
     gallons: {

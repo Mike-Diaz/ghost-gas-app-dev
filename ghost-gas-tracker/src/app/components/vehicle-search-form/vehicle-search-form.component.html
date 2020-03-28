@@ -1,6 +1,6 @@
 <form>
   <mat-form-field>
-    <input type="search" placeholder="Search for a vehicle number..." matInput [formControl]="searchControl"
+    <input type="search" placeholder="Search Vehicle Number " matInput [formControl]="searchControl"
            [matAutocomplete]="autoSearch">
     <button mat-button *ngIf="searchControl.value.length" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
       <mat-icon>close</mat-icon>

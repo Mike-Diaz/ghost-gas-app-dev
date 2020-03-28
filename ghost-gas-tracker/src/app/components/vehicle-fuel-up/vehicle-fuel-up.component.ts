@@ -33,7 +33,9 @@ export class VehicleFuelUpComponent {
         userId: "1", // TODO: retrieve userId (required length > 0)
         vehicleId: this.selectedVehicle._id,
         fuelUpDate: new Date(this.form.value.fuelUpDate),
-        miles: Number(this.form.value.miles),
+        miles: Number(this.form.value.mileEnd - this.form.value.mileStart),
+        mileStart: Number(this.form.value.mileStart),
+        mileEnd: Number(this.form.value.mileEnd),
         gallons: Number(this.form.value.gallons),
         totalCost: Number(this.form.value.totalCost)
       };
