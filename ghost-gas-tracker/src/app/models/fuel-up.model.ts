@@ -7,6 +7,7 @@ export class FuelUp {
   miles: number;
   mileStart: number;
   mileEnd: number;
+  mpg: number;
   gallons: number;
   totalCost: number;
 }

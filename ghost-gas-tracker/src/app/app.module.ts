@@ -34,6 +34,7 @@ import { UserSearchFormComponent } from './components/user-search-form/user-sear
 import {ToastrModule} from "ngx-toastr";
 import { APP_BASE_HREF } from '@angular/common';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular4-social-login';
+import { ExporterService } from '../app/services/exporter.service';
 
 const google_oauth_client_id:string = '930349649326-jpku7csmlrjf4j25raoglmha67s5ii2r.apps.googleusercontent.com';
 let config = new AuthServiceConfig([
@@ -83,7 +84,7 @@ let config = new AuthServiceConfig([
     ToastrModule.forRoot(),
     SocialLoginModule.initialize(config)
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [ExporterService, {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -37,6 +37,7 @@ export class VehicleFuelUpComponent {
         mileStart: Number(this.form.value.mileStart),
         mileEnd: Number(this.form.value.mileEnd),
         gallons: Number(this.form.value.gallons),
+        mpg: Number(Math.round(((this.form.value.mileEnd - this.form.value.mileStart) / this.form.value.gallons + Number.EPSILON) * 1000) /1000),
         totalCost: Number(this.form.value.totalCost)
       };
 

@@ -36,6 +36,10 @@ const FuelUpSchema = new Schema({
         type: Number,
         required: true,
     },
+    mpg: {
+        type: Number,
+        required: false,
+    },
     totalCost: {
         type: Number,
         required: true

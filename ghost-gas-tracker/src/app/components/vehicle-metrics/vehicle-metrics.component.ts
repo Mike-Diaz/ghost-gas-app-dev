@@ -5,6 +5,8 @@ import { FuelUp } from "../../models/fuel-up.model";
 import { map } from "rxjs/operators";
 import { SelectionModel } from "@angular/cdk/collections";
 import { VehicleService } from "../../services/vehicle.service";
+import { MatTableDataSource } from '@angular/material/table';
+import { ExporterService } from '../../services/exporter.service';
 
 @Component({
   selector: 'app-vehicle-metrics',
@@ -16,10 +18,11 @@ export class VehicleMetricsComponent implements OnInit {
   fuelUps: FuelUp[] = null;
   displayedFuelUpCols: string[] = ['select', 'fuelUpDate', 'mileStart', 'mileEnd', 'miles', 'gallons', 'calc_mpg', 'totalCost'];
   selection: SelectionModel<FuelUp> = new SelectionModel<FuelUp>(true);
-
+  
   constructor(
     private fuelUpService: FuelUpService,
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    private excelService: ExporterService
   ) {
   }
 
@@ -32,6 +35,17 @@ export class VehicleMetricsComponent implements OnInit {
       map(items => items.filter(item => item.vehicleId === vehicle._id))
     ).subscribe(result => this.fuelUps = result);
   }
+
+  private exportAsXLSX(): void {
+    let dataSource = new MatTableDataSource(this.fuelUps);
+    this.excelService.exportToExcel(dataSource.data, 'vehicle_metrics_');
+  }
+
+  // dataSource = new MatTableDataSource((vehicle) => {this.getFuelUps(vehicle: Vehicle)});
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
 
   private getTotalFuelUpMileage(): number {
     if (this.fuelUps !== null) {
