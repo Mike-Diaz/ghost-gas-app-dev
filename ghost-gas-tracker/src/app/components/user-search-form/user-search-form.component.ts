@@ -36,11 +36,11 @@ export class UserSearchFormComponent implements OnInit {
   private _filterSearch(searchInput: string) {
     const filterValue = searchInput.length ? searchInput : '';
 
-    return this.searchOptions.filter(option => option.userId ? option.userId.toString().includes(filterValue) : '');
+    return this.searchOptions.filter(option => option._id ? option._id.toString().includes(filterValue) : '');
   }
 
   searchDisplay(option: User) {
-    return option.userId;
+    return option._id;
   }
 
   selectUser(event: MatAutocompleteSelectedEvent) {

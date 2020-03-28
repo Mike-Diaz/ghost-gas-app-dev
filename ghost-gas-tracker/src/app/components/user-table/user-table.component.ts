@@ -38,22 +38,12 @@ export class UserTableComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       const saveUser: User = {
-        userId: this.form.value.userId,
         organizationId: this.form.value.organizationId,
         role: this.form.value.role,
         name: this.form.value.name,
-        displayName: this.form.value.displayName,
-        birthday: this.form.value.birthday,
-        relationship: this.form.value.relationship,
-        language: this.form.value.language,
         emails: this.form.value.emails,
-        gender: this.form.value.gender,
-        isPerson: this.form.value.isPerson,
-        isPlusUser: this.form.value.isPlusUser,
         picture: this.form.value.picture,
-        coverPhoto: this.form.value.coverPhoto,
-        placesLived: this.form.value.placesLived,
-      };
+        };
 
       if (this.selectedUser._id) {
         // Editing

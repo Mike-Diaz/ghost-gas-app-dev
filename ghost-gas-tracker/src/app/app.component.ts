@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'ghost-gas-tracker';
-
+  show: boolean = false;
   step = 0;
+  loggedIn = false;
+
+  loginFunc(){
+    this.show = true;
+  }
 
   setStep(index: number) {
     this.step = index;
@@ -25,5 +29,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  receiveLoggedIn($event) {
+    this.loggedIn = $event;
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'http://ghost-mongo-server.azurewebsites.net' // http://localhost:3000 CHANGE THIS FOR DEV
 };
 
 /*

@@ -1,1 +1,6 @@
-<mat-toolbar color="primary" flex="1"><img src="../../../assets/gasTracker.png" alt="Logo" style="width: 200px; height: 43px;" ></mat-toolbar>
+<mat-toolbar color="primary" flex="1">
+    <mat-toolbar-row>
+            <img src="../../../assets/gasTracker.png" alt="Logo" style="width: 200px; height: 43px;" >
+            <mat-icon *ngIf="user" class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user-24px</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>

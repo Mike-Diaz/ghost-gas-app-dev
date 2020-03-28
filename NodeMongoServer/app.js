@@ -77,61 +77,64 @@ app
 
 passport = require('passport'),
   auth = require('./config/auth'),
-  cookieParser = require('cookie-parser'),
-  cookieSession = require('cookie-session');
+//   cookieParser = require('cookie-parser'),
+//   cookieSession = require('cookie-session');
 
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['123']
-}));
-app.use(cookieParser());
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['123']
+// }));
+// app.use(cookieParser());
 
 auth(passport);
 app.use(passport.initialize());
 app.get('/', (req, res) => {
-  if (req.session.token) {
-    res.cookie('token', req.session.token);
-    res.json({
-      status: 'session cookie set'
-    });
-  } else {
-    res.cookie('token', '')
-    res.json({
-      status: 'session cookie not set'
-    });
-  }
+  // if (req.session.token && req.session.userId) {
+  //   res.cookie('auth', req.session, { encode: String });
+  //   res.json({
+  //     status: 'session cookie set'
+  //   });
+  // } else {
+  //   res.cookie('auth', { token: '', userId: '' }, { encode: String });
+  //   res.json({
+  //     status: 'session cookie not set'
+  //   });
+  // }
 });
 
-// alternate jwt method
-//   // If a user is found
-//   if(user){
-//     token = user.generateJwt();
-//     res.status(200);
-//     res.json({
-//       "token" : token
-//     });
-//   } else {
-//     // If user is not found
-//     res.status(401).json(info);
-//   }
-// }
 
 app.get('/auth/google', passport.authenticate('google', {
   scope: ['email', 'profile']
 }));
 
 app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  (req, res) => {
-    req.session.token = req.user.token;
-    res.redirect('/');
+    passport.authenticate('google', { session: false }),
+      (req, res) => {
+
+let user = req.user;
+console.log(user);
+  // If a user is found
+  if(user){
+    token = jwt.sign(user, 'token_secret');
+    res.status(200);
+    res.json({
+      "token" : token
+    });
+    console.log(token);
+    res.send(token);
+  } else {
+    // If user is not found
+    res.status(401).json(info);
   }
+  
+  }
+
 );
 
 app.get('/logout', (req, res) => {
   req.logout();
-  req.session = null;
+  req.token = null;
   res.redirect('/');
 });
 

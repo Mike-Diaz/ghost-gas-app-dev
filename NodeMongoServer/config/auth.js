@@ -14,19 +14,34 @@ module.exports = (passport) => {
             callbackURL: 'http://localhost:3000/auth/google/callback',
             passReqToCallback: true
         },
-        (request, accessToken, refreshToken, profile, done) => {
+        async (request, accessToken, refreshToken, profile, done) => {
             console.log('Getting User Information');
-            new User({
+
+            const userData = new User({
                 organizationId: '1', // example organizationId since it's required in the schema?
-                userId:profile.id,
-                name:profile.name.givenName + ' ' + profile.name.familyName,
-                email:profile.emails[0].value,
-                picture:profile.photos[0].value
-            }).save((err, newUser) => {
-                console.log('new user created: ' + newUser );
+                googleId: profile.id,
+                name: profile.name.givenName + ' ' + profile.name.familyName,
+                email: profile.emails[0].value,
+                picture: profile.photos[0].value
             });
+
+            let userId = '';
+            const userDoc = await User.find({googleId: userData.googleId}).exec();
+
+            if (userDoc.length) {
+                // Exists already
+                console.log('User already exists: ', userDoc[0]);
+                userId = userDoc[0]._id;
+            } else {
+                // Doesn't exist, create new user
+                const newUser = await userData.save();
+                console.log('New user created: ' + newUser);
+                userId = newUser._id;
+            }
+
             return done(null, {
-                token: accessToken
+                token: accessToken,
+                userId: userId
             });
         }));
 };

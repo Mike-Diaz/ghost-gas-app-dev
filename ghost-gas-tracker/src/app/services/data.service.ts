@@ -15,10 +15,12 @@ export class DataService {
     private toastr: ToastrService
   ) {
     this.loggedIn = new Subject();
+    this.userId = new Subject();
     this.getLogin();
   }
 
   loggedIn: Subject<boolean>;
+  userId: Subject<string>;
 
   //login feature for sign in
   // doLogin(email: string, password: string) {
@@ -40,7 +42,9 @@ export class DataService {
     this.http.get(API_URL + '/', {
       withCredentials: true // <=========== important!
     }).subscribe((resp: any) => {
-      this.loggedIn.next(resp.loggedIn);
+      const cookieData = JSON.parse(resp);
+      this.loggedIn.next(cookieData.token.length ? true : false);
+      this.userId.next(cookieData.userId.length ? cookieData.userId : '');
     }, (errorResp) => {
       this.toastr.error('Log in failed')
     })

@@ -28,10 +28,20 @@ import { OrganizationTableComponent } from './components/organization-table/orga
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckbox, MatCheckboxModule } from "@angular/material/checkbox";
+import { MatCardModule } from '@angular/material/card';
 import { OrganizationSearchFormComponent } from './components/organization-search-form/organization-search-form.component';
 import { UserSearchFormComponent } from './components/user-search-form/user-search-form.component';
 import {ToastrModule} from "ngx-toastr";
 import { APP_BASE_HREF } from '@angular/common';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular4-social-login';
+
+const google_oauth_client_id:string = '930349649326-jpku7csmlrjf4j25raoglmha67s5ii2r.apps.googleusercontent.com';
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(google_oauth_client_id)
+  }
+]);
 
 @NgModule({
   declarations: [
@@ -69,7 +79,9 @@ import { APP_BASE_HREF } from '@angular/common';
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    ToastrModule.forRoot()
+    MatCardModule,
+    ToastrModule.forRoot(),
+    SocialLoginModule.initialize(config)
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]

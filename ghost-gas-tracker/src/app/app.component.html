@@ -1,5 +1,8 @@
-<mat-grid-list cols="1" rowHeight="fit">
-  <mat-grid-tile-header><app-header></app-header></mat-grid-tile-header>
+<app-header (userEvent)="receiveUser"></app-header>
+<mat-divider></mat-divider>
+<app-home (loggedInEvent)="receiveLoggedIn($event)"></app-home>
+<mat-divider></mat-divider>
+<mat-grid-list cols="1" rowHeight="fit" *ngIf="loggedIn">
   <mat-accordion class="user-dashboard">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>
