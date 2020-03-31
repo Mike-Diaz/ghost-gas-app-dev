@@ -44,6 +44,10 @@ let config = new AuthServiceConfig([
   }
 ]);
 
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,9 +86,9 @@ let config = new AuthServiceConfig([
     MatCheckboxModule,
     MatCardModule,
     ToastrModule.forRoot(),
-    SocialLoginModule.initialize(config)
+    SocialLoginModule //.initialize(config)
   ],
-  providers: [ExporterService, {provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [ExporterService, {provide: APP_BASE_HREF, useValue: '/'}, {provide: AuthServiceConfig, useFactory: provideConfig}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

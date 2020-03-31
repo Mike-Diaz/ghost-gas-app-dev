@@ -36,7 +36,7 @@ export class VehicleMetricsComponent implements OnInit {
     ).subscribe(result => this.fuelUps = result);
   }
 
-  private exportAsXLSX(): void {
+  exportAsXLSX(): void {
     let dataSource = new MatTableDataSource(this.fuelUps);
     this.excelService.exportToExcel(dataSource.data, 'vehicle_metrics_');
   }
@@ -47,19 +47,19 @@ export class VehicleMetricsComponent implements OnInit {
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
 
-  private getTotalFuelUpMileage(): number {
+  getTotalFuelUpMileage(): number {
     if (this.fuelUps !== null) {
       return this.fuelUps.reduce((sum, fuelUp) => sum += fuelUp.miles, 0);
     }
   }
 
-  private getTotalFuelUpCpst(): number {
+  getTotalFuelUpCpst(): number {
     if (this.fuelUps !== null) {
       return this.fuelUps.reduce((sumCost, fuelUp) => sumCost += fuelUp.totalCost, 0);
     }
   }
 
-  private getAverageFuelUpMpg(): number {
+  getAverageFuelUpMpg(): number {
     if (this.fuelUps !== null) {
       return this.fuelUps.length > 0
       ? this.fuelUps.reduce((sumMpg, fuelUp) => sumMpg += fuelUp.miles / fuelUp.gallons, 0) / this.fuelUps.length
