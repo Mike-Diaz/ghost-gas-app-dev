@@ -1,8 +1,10 @@
-<app-header (userEvent)="receiveUser"></app-header>
+<app-header></app-header>
+<!-- (userEvent)="receiveUser" -->
 <mat-divider></mat-divider>
 <app-home (loggedInEvent)="receiveLoggedIn($event)"></app-home>
 <mat-divider></mat-divider>
-<mat-grid-list cols="1" rowHeight="fit" *ngIf="loggedIn">
+<!-- *ngIf="loggedIn"  add this back to mat-grid-list component to render only if logged in-->
+<mat-grid-list cols="1" rowHeight="fit" >
   <mat-accordion class="user-dashboard">
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>

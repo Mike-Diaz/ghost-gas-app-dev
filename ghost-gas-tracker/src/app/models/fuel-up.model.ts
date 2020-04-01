@@ -5,6 +5,9 @@ export class FuelUp {
   vehicleId: string;
   fuelUpDate: Date;
   miles: number;
+  mileStart: number;
+  mileEnd: number;
+  mpg: number;
   gallons: number;
   totalCost: number;
 }

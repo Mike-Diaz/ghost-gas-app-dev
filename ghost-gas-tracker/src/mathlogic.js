@@ -1,13 +1,13 @@
-let dist;
-let mpg;
-let price;
+// let dist;
+// let mpg;
+// let price;
 
-/* Gallons Used on Trip*/
+// /* Gallons Used on Trip*/
 
-let galPerTrip = dist/mpg;
+// let galPerTrip = dist/mpg;
 
-/* Price for Trip */
-let pricePerTrip = galPerTrip * price;
+// /* Price for Trip */
+// let pricePerTrip = galPerTrip * price;
 
-/*  */
+// /*  */
 

@@ -1,18 +1,14 @@
 <mat-card>
     <mat-card-title *ngIf="!user">Login with Google</mat-card-title>
-    <!-- <mat-divider></mat-divider>
-    <a href="/auth/google">Sign In</a>
-    <mat-divider></mat-divider>
-    <a href="/logout">Sign out</a> -->
-    <!-- <button mat-button (click)="sendLogin()" class="button">Log In</button> -->
-    <button *ngIf="!user" mat-button (click)="singIn('Google');">Sign in with Google</button>
 
-    <div *ngIf="user"> 
+    <button *ngIf="!user" mat-raised-button color="primary" (click)="singIn('Google');">Sign in with Google</button>
+
+    <div *ngIf="user">
         <img src="{{ user.photoUrl }}">
         <h4>{{ user.name }}</h4>
         <p>{{ user.email }}</p>
     </div>
 
-    <button mat-button (click)="signOut();">Sign out</button>
+    <button *ngIf="user" mat-raised-button color="primary" (click)="signOut();">Sign out</button>
 
 </mat-card>
